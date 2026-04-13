@@ -39,10 +39,13 @@ Current endpoints:
 GET /api/health
 POST /api/images
 GET /api/images
+GET /api/filters
 DELETE /api/images/{image_id}
 ```
 
 `POST /api/images` accepts multipart form data with an `image` file and optional context fields: `designer`, `continent`, `country`, `city`, and `captured_at`.
+`GET /api/images` supports search and filters through query params such as `query`, `garment_type`, `style`, `material`, `color_palette`, `pattern`, `season`, `occasion`, `consumer_profile`, `country`, `city`, and `designer`.
+`GET /api/filters` dynamically returns available filter values from stored image metadata.
 `DELETE /api/images/{image_id}` removes the database record and the uploaded local image file.
 
 Uploaded images are classified through `backend/app/classifier.py`. The classifier currently returns placeholder metadata so the workflow is stable before connecting a real multimodal model.
@@ -58,6 +61,12 @@ npm run dev
 Open `http://localhost:5173`.
 
 The frontend can upload an image with optional designer and location context, then renders the stored image records and AI metadata returned by `GET /api/images`.
+
+Backend tests:
+
+```bash
+./backend/.venv/bin/pytest
+```
 
 ## Environment Variables
 
@@ -75,5 +84,5 @@ If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placehol
 
 ## Next Steps
 
-1. Add search and dynamically generated filters.
+1. Add frontend search and filter controls.
 2. Add designer annotations, evaluation, and end-to-end tests.

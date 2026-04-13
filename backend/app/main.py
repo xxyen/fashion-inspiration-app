@@ -54,6 +54,84 @@ def serialize_image(row) -> dict:
     }
 
 
+def normalize(value: str | None) -> str:
+    return (value or "").strip().lower()
+
+
+def list_matches(values: list[str], expected: str | None) -> bool:
+    if not expected:
+        return True
+    expected_value = normalize(expected)
+    return expected_value in {normalize(value) for value in values}
+
+
+def value_matches(value: str | None, expected: str | None) -> bool:
+    return not expected or normalize(value) == normalize(expected)
+
+
+def searchable_text(record: dict) -> str:
+    metadata = record["metadata"]
+    pieces = [
+        record["description"],
+        record["designer_notes"],
+        record["designer"],
+        record["continent"],
+        record["country"],
+        record["city"],
+        metadata.get("season"),
+        metadata.get("location_context", {}).get("scene"),
+        " ".join(record["designer_tags"]),
+        " ".join(metadata.get("garment_type", [])),
+        " ".join(metadata.get("style", [])),
+        " ".join(metadata.get("material", [])),
+        " ".join(metadata.get("color_palette", [])),
+        " ".join(metadata.get("pattern", [])),
+        " ".join(metadata.get("occasion", [])),
+        " ".join(metadata.get("consumer_profile", [])),
+        " ".join(metadata.get("trend_notes", [])),
+    ]
+    return " ".join(piece for piece in pieces if piece).lower()
+
+
+def record_matches(
+    record: dict,
+    query: str | None,
+    garment_type: str | None,
+    style: str | None,
+    material: str | None,
+    color_palette: str | None,
+    pattern: str | None,
+    season: str | None,
+    occasion: str | None,
+    consumer_profile: str | None,
+    country: str | None,
+    city: str | None,
+    designer: str | None,
+) -> bool:
+    metadata = record["metadata"]
+    return (
+        (not query or normalize(query) in searchable_text(record))
+        and list_matches(metadata.get("garment_type", []), garment_type)
+        and list_matches(metadata.get("style", []), style)
+        and list_matches(metadata.get("material", []), material)
+        and list_matches(metadata.get("color_palette", []), color_palette)
+        and list_matches(metadata.get("pattern", []), pattern)
+        and value_matches(metadata.get("season"), season)
+        and list_matches(metadata.get("occasion", []), occasion)
+        and list_matches(metadata.get("consumer_profile", []), consumer_profile)
+        and value_matches(record["country"], country)
+        and value_matches(record["city"], city)
+        and value_matches(record["designer"], designer)
+    )
+
+
+def add_values(bucket: set[str], values: list[str]) -> None:
+    for value in values:
+        cleaned = value.strip()
+        if cleaned:
+            bucket.add(cleaned)
+
+
 @app.post("/api/images")
 async def upload_image(
     image: UploadFile = File(...),
@@ -116,12 +194,81 @@ async def upload_image(
 
 
 @app.get("/api/images")
-def list_images() -> list[dict]:
+def list_images(
+    query: str | None = None,
+    garment_type: str | None = None,
+    style: str | None = None,
+    material: str | None = None,
+    color_palette: str | None = None,
+    pattern: str | None = None,
+    season: str | None = None,
+    occasion: str | None = None,
+    consumer_profile: str | None = None,
+    country: str | None = None,
+    city: str | None = None,
+    designer: str | None = None,
+) -> list[dict]:
     with get_connection() as connection:
         rows = connection.execute(
             "SELECT * FROM images ORDER BY created_at DESC, id DESC"
         ).fetchall()
-    return [serialize_image(row) for row in rows]
+    records = [serialize_image(row) for row in rows]
+    return [
+        record
+        for record in records
+        if record_matches(
+            record,
+            query,
+            garment_type,
+            style,
+            material,
+            color_palette,
+            pattern,
+            season,
+            occasion,
+            consumer_profile,
+            country,
+            city,
+            designer,
+        )
+    ]
+
+
+@app.get("/api/filters")
+def get_filters() -> dict[str, list[str]]:
+    with get_connection() as connection:
+        rows = connection.execute("SELECT * FROM images").fetchall()
+
+    buckets: dict[str, set[str]] = {
+        "garment_type": set(),
+        "style": set(),
+        "material": set(),
+        "color_palette": set(),
+        "pattern": set(),
+        "season": set(),
+        "occasion": set(),
+        "consumer_profile": set(),
+        "country": set(),
+        "city": set(),
+        "designer": set(),
+    }
+
+    for row in rows:
+        record = serialize_image(row)
+        metadata = record["metadata"]
+        add_values(buckets["garment_type"], metadata.get("garment_type", []))
+        add_values(buckets["style"], metadata.get("style", []))
+        add_values(buckets["material"], metadata.get("material", []))
+        add_values(buckets["color_palette"], metadata.get("color_palette", []))
+        add_values(buckets["pattern"], metadata.get("pattern", []))
+        add_values(buckets["occasion"], metadata.get("occasion", []))
+        add_values(buckets["consumer_profile"], metadata.get("consumer_profile", []))
+        add_values(buckets["season"], [metadata["season"]] if metadata.get("season") else [])
+        add_values(buckets["country"], [record["country"]] if record.get("country") else [])
+        add_values(buckets["city"], [record["city"]] if record.get("city") else [])
+        add_values(buckets["designer"], [record["designer"]] if record.get("designer") else [])
+
+    return {key: sorted(values) for key, values in buckets.items()}
 
 
 @app.delete("/api/images/{image_id}")
