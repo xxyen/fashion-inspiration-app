@@ -1,11 +1,12 @@
 import { FormEvent, useEffect, useState } from "react";
-import { fetchImages, getImageUrl, uploadImage } from "./api";
+import { deleteImage, fetchImages, getImageUrl, uploadImage } from "./api";
 import type { ImageRecord } from "./types";
 
 function App() {
   const [images, setImages] = useState<ImageRecord[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function loadImages() {
@@ -36,6 +37,19 @@ function App() {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setIsUploading(false);
+    }
+  }
+
+  async function handleDelete(id: number) {
+    setError(null);
+    setDeletingId(id);
+    try {
+      await deleteImage(id);
+      setImages((currentImages) => currentImages.filter((image) => image.id !== id));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Delete failed");
+    } finally {
+      setDeletingId(null);
     }
   }
 
@@ -172,7 +186,17 @@ function App() {
                     alt={image.description ?? "Fashion inspiration upload"}
                   />
                   <div className="space-y-2 p-4">
-                    <p className="font-medium">{image.designer || "Unknown designer"}</p>
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="font-medium">{image.designer || "Unknown designer"}</p>
+                      <button
+                        className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-700 disabled:cursor-wait disabled:opacity-60"
+                        disabled={deletingId === image.id}
+                        onClick={() => handleDelete(image.id)}
+                        type="button"
+                      >
+                        {deletingId === image.id ? "Deleting..." : "Delete"}
+                      </button>
+                    </div>
                     <p className="text-sm text-neutral-600">
                       {[image.city, image.country].filter(Boolean).join(", ") || "No location"}
                     </p>

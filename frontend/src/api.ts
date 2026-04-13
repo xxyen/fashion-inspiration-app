@@ -26,3 +26,12 @@ export async function uploadImage(formData: FormData): Promise<ImageRecord> {
   return response.json();
 }
 
+export async function deleteImage(id: number): Promise<void> {
+  const response = await fetch(`${API_BASE_URL}/api/images/${id}`, {
+    method: "DELETE"
+  });
+  if (!response.ok) {
+    const payload = await response.json().catch(() => null);
+    throw new Error(payload?.detail ?? "Failed to delete image");
+  }
+}

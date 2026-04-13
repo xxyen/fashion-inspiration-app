@@ -122,3 +122,22 @@ def list_images() -> list[dict]:
             "SELECT * FROM images ORDER BY created_at DESC, id DESC"
         ).fetchall()
     return [serialize_image(row) for row in rows]
+
+
+@app.delete("/api/images/{image_id}")
+def delete_image(image_id: int) -> dict[str, int | str]:
+    with get_connection() as connection:
+        row = connection.execute(
+            "SELECT * FROM images WHERE id = ?",
+            (image_id,),
+        ).fetchone()
+        if row is None:
+            raise HTTPException(status_code=404, detail="Image not found")
+
+        connection.execute("DELETE FROM images WHERE id = ?", (image_id,))
+
+    image_path = UPLOAD_DIR / row["filename"]
+    if image_path.exists() and image_path.is_file():
+        image_path.unlink()
+
+    return {"status": "deleted", "id": image_id}

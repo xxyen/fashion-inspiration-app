@@ -39,9 +39,11 @@ Current endpoints:
 GET /api/health
 POST /api/images
 GET /api/images
+DELETE /api/images/{image_id}
 ```
 
 `POST /api/images` accepts multipart form data with an `image` file and optional context fields: `designer`, `continent`, `country`, `city`, and `captured_at`.
+`DELETE /api/images/{image_id}` removes the database record and the uploaded local image file.
 
 Uploaded images are classified through `backend/app/classifier.py`. The classifier currently returns placeholder metadata so the workflow is stable before connecting a real multimodal model.
 
