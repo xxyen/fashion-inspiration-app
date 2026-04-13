@@ -65,12 +65,15 @@ Copy `.env.example` to `.env` and fill in `OPENAI_API_KEY` when the real multimo
 
 ```text
 OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4.1-mini
 DATABASE_PATH=backend/fashion.db
 UPLOAD_DIR=backend/uploads
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
+If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placeholder metadata so upload and gallery flows still work locally.
+
 ## Next Steps
 
-1. Connect the classifier boundary to a real multimodal model.
-2. Add search, filters, designer annotations, evaluation, and tests.
+1. Add search and dynamically generated filters.
+2. Add designer annotations, evaluation, and end-to-end tests.
