@@ -11,7 +11,9 @@ def parse_model_output(raw: str) -> ClassificationResult:
         text = fenced_json.group(1).strip()
 
     payload = json.loads(text)
-    return ClassificationResult.model_validate(payload)
+    if hasattr(ClassificationResult, "model_validate"):
+        return ClassificationResult.model_validate(payload)
+    return ClassificationResult.parse_obj(payload)
 
 
 async def classify_image(image_path: Path) -> ClassificationResult:
@@ -24,4 +26,3 @@ async def classify_image(image_path: Path) -> ClassificationResult:
             trend_notes=["classification placeholder"],
         ),
     )
-
