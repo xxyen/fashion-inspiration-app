@@ -1,5 +1,9 @@
 import sqlite3
+from pathlib import Path
 from .config import DATABASE_PATH
+
+
+SCHEMA_PATH = Path(__file__).with_name("schema.sql")
 
 
 def get_connection() -> sqlite3.Connection:
@@ -10,16 +14,4 @@ def get_connection() -> sqlite3.Connection:
 
 def init_db() -> None:
     with get_connection() as connection:
-        connection.execute(
-            """
-            CREATE TABLE IF NOT EXISTS images (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                filename TEXT NOT NULL,
-                image_url TEXT NOT NULL,
-                description TEXT,
-                metadata_json TEXT,
-                designer_notes TEXT,
-                created_at TEXT DEFAULT CURRENT_TIMESTAMP
-            )
-            """
-        )
+        connection.executescript(SCHEMA_PATH.read_text())

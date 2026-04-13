@@ -13,6 +13,7 @@ The planned stack is:
 ```text
 frontend/          React + Tailwind app
 backend/           FastAPI app
+backend/app/schema.sql SQLite image metadata schema
 backend/uploads/   Future local upload storage
 eval/              Future evaluation dataset and scripts
 tests/             Future backend and e2e tests
@@ -30,7 +31,9 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-The API starts at `http://localhost:8000`. The only endpoint for now is:
+The API starts at `http://localhost:8000`. On startup, the backend initializes the SQLite schema in `backend/app/schema.sql`.
+
+The only endpoint for now is:
 
 ```text
 GET /api/health
@@ -60,7 +63,6 @@ VITE_API_BASE_URL=http://localhost:8000
 ## Next Steps
 
 1. Add image upload storage and the first `/api/images` endpoint.
-2. Add the SQLite image metadata schema.
+2. Build the gallery UI around stored image records.
 3. Add the AI classification service boundary.
-4. Build the gallery UI.
-5. Add search, filters, designer annotations, evaluation, and tests.
+4. Add search, filters, designer annotations, evaluation, and tests.
