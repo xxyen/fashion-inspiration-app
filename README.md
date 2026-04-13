@@ -33,11 +33,15 @@ uvicorn app.main:app --reload
 
 The API starts at `http://localhost:8000`. On startup, the backend initializes the SQLite schema in `backend/app/schema.sql`.
 
-The only endpoint for now is:
+Current endpoints:
 
 ```text
 GET /api/health
+POST /api/images
+GET /api/images
 ```
+
+`POST /api/images` accepts multipart form data with an `image` file and optional context fields: `designer`, `continent`, `country`, `city`, and `captured_at`.
 
 Frontend:
 
@@ -62,7 +66,6 @@ VITE_API_BASE_URL=http://localhost:8000
 
 ## Next Steps
 
-1. Add image upload storage and the first `/api/images` endpoint.
-2. Build the gallery UI around stored image records.
-3. Add the AI classification service boundary.
-4. Add search, filters, designer annotations, evaluation, and tests.
+1. Build the gallery UI around stored image records.
+2. Add the AI classification service boundary.
+3. Add search, filters, designer annotations, evaluation, and tests.
