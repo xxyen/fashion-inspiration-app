@@ -1,6 +1,6 @@
 # Fashion Inspiration App
 
-Initial project scaffold for a fashion inspiration image library. The app currently supports image upload and a basic gallery backed by SQLite.
+Initial project scaffold for a fashion inspiration image library. The app currently supports image upload, a basic gallery backed by SQLite, and an AI classification boundary with deterministic placeholder metadata.
 
 The planned stack is:
 
@@ -43,6 +43,8 @@ GET /api/images
 
 `POST /api/images` accepts multipart form data with an `image` file and optional context fields: `designer`, `continent`, `country`, `city`, and `captured_at`.
 
+Uploaded images are classified through `backend/app/classifier.py`. The classifier currently returns placeholder metadata so the workflow is stable before connecting a real multimodal model.
+
 Frontend:
 
 ```bash
@@ -53,7 +55,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-The frontend can upload an image with optional designer and location context, then renders the stored image records returned by `GET /api/images`.
+The frontend can upload an image with optional designer and location context, then renders the stored image records and AI metadata returned by `GET /api/images`.
 
 ## Environment Variables
 
@@ -68,6 +70,5 @@ VITE_API_BASE_URL=http://localhost:8000
 
 ## Next Steps
 
-1. Add the AI classification service boundary.
-2. Store AI-generated descriptions and structured garment metadata.
-3. Add search, filters, designer annotations, evaluation, and tests.
+1. Connect the classifier boundary to a real multimodal model.
+2. Add search, filters, designer annotations, evaluation, and tests.

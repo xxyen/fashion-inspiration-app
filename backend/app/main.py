@@ -4,8 +4,10 @@ from uuid import uuid4
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from .classifier import classify_image
 from .config import UPLOAD_DIR
 from .db import get_connection, init_db
+from .schemas import GarmentAttributes
 
 
 app = FastAPI(title="Fashion Inspiration API")
@@ -33,12 +35,13 @@ def health() -> dict[str, str]:
 
 
 def serialize_image(row) -> dict:
+    metadata = GarmentAttributes.model_validate(json.loads(row["metadata_json"] or "{}"))
     return {
         "id": row["id"],
         "filename": row["filename"],
         "image_url": row["image_url"],
         "description": row["description"],
-        "metadata": json.loads(row["metadata_json"] or "{}"),
+        "metadata": metadata.model_dump(),
         "designer_tags": json.loads(row["designer_tags_json"] or "[]"),
         "designer_notes": row["designer_notes"],
         "designer": row["designer"],
@@ -68,7 +71,13 @@ async def upload_image(
     image_path = UPLOAD_DIR / filename
     image_path.write_bytes(await image.read())
 
-    metadata_json = json.dumps({})
+    classification = await classify_image(image_path)
+    metadata = classification.attributes
+    metadata.location_context.continent = metadata.location_context.continent or continent
+    metadata.location_context.country = metadata.location_context.country or country
+    metadata.location_context.city = metadata.location_context.city or city
+
+    metadata_json = metadata.model_dump_json()
     image_url = f"/uploads/{filename}"
     with get_connection() as connection:
         cursor = connection.execute(
@@ -89,7 +98,7 @@ async def upload_image(
             (
                 filename,
                 image_url,
-                None,
+                classification.description,
                 metadata_json,
                 designer,
                 continent,

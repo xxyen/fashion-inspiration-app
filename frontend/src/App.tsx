@@ -39,6 +39,16 @@ function App() {
     }
   }
 
+  function metadataTags(image: ImageRecord) {
+    const metadata = image.metadata;
+    return [
+      ...(metadata.garment_type ?? []),
+      ...(metadata.style ?? []),
+      ...(metadata.color_palette ?? []),
+      metadata.season
+    ].filter(Boolean);
+  }
+
   return (
     <main className="min-h-screen bg-stone-50 text-neutral-900">
       <section className="mx-auto max-w-6xl px-6 py-10">
@@ -50,8 +60,8 @@ function App() {
             Upload and review field inspiration images.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-neutral-700">
-            This step connects the React UI to the Python upload API. AI classification,
-            search, filters, and annotations come next.
+            This step stores uploaded images and shows AI metadata from the backend
+            classification boundary. Search, filters, and annotations come next.
           </p>
         </div>
 
@@ -166,6 +176,19 @@ function App() {
                     <p className="text-sm text-neutral-600">
                       {[image.city, image.country].filter(Boolean).join(", ") || "No location"}
                     </p>
+                    {image.description ? (
+                      <p className="text-sm leading-6 text-neutral-700">{image.description}</p>
+                    ) : null}
+                    <div className="flex flex-wrap gap-2">
+                      {metadataTags(image).map((tag) => (
+                        <span
+                          className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800"
+                          key={tag}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                     <p className="text-xs text-neutral-500">
                       Uploaded {new Date(image.created_at).toLocaleDateString()}
                     </p>
