@@ -1,6 +1,6 @@
 # Fashion Inspiration App
 
-Initial project scaffold for a fashion inspiration image library.
+Initial project scaffold for a fashion inspiration image library. The app currently supports image upload and a basic gallery backed by SQLite.
 
 The planned stack is:
 
@@ -53,6 +53,8 @@ npm run dev
 
 Open `http://localhost:5173`.
 
+The frontend can upload an image with optional designer and location context, then renders the stored image records returned by `GET /api/images`.
+
 ## Environment Variables
 
 Copy `.env.example` to `.env` and fill in `OPENAI_API_KEY` when the real multimodal classifier is connected.
@@ -66,6 +68,6 @@ VITE_API_BASE_URL=http://localhost:8000
 
 ## Next Steps
 
-1. Build the gallery UI around stored image records.
-2. Add the AI classification service boundary.
+1. Add the AI classification service boundary.
+2. Store AI-generated descriptions and structured garment metadata.
 3. Add search, filters, designer annotations, evaluation, and tests.
