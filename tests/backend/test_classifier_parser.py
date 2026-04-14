@@ -67,6 +67,27 @@ def test_parse_model_output_fills_optional_attribute_defaults():
     assert result.attributes.location_context.country is None
 
 
+def test_parse_model_output_removes_nulls_from_list_attributes():
+    raw = json.dumps(
+        {
+            "description": "A layered streetwear outfit.",
+            "attributes": {
+                "garment_type": ["jacket", None],
+                "material": [None],
+                "style": "streetwear",
+                "location_context": None,
+            },
+        }
+    )
+
+    result = parse_model_output(raw)
+
+    assert result.attributes.garment_type == ["jacket"]
+    assert result.attributes.material == []
+    assert result.attributes.style == ["streetwear"]
+    assert result.attributes.location_context.scene is None
+
+
 def test_parse_model_output_rejects_invalid_json():
     with pytest.raises(json.JSONDecodeError):
         parse_model_output("not json")
@@ -75,4 +96,3 @@ def test_parse_model_output_rejects_invalid_json():
 def test_parse_model_output_rejects_missing_required_description():
     with pytest.raises(ValidationError):
         parse_model_output(json.dumps({"attributes": {}}))
-

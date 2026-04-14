@@ -52,13 +52,43 @@ def fallback_classification() -> ClassificationResult:
     )
 
 
+LIST_ATTRIBUTE_FIELDS = [
+    "garment_type",
+    "style",
+    "material",
+    "color_palette",
+    "pattern",
+    "occasion",
+    "consumer_profile",
+    "trend_notes",
+]
+
+
+def normalize_attribute_payload(payload: dict) -> dict:
+    attributes = payload.setdefault("attributes", {})
+    for field in LIST_ATTRIBUTE_FIELDS:
+        value = attributes.get(field, [])
+        if value is None:
+            attributes[field] = []
+        elif isinstance(value, list):
+            attributes[field] = [str(item) for item in value if item not in (None, "")]
+        else:
+            attributes[field] = [str(value)]
+
+    location_context = attributes.get("location_context")
+    if not isinstance(location_context, dict):
+        attributes["location_context"] = {}
+
+    return payload
+
+
 def parse_model_output(raw: str) -> ClassificationResult:
     text = raw.strip()
     fenced_json = re.search(r"```(?:json)?\s*(.*?)```", text, re.DOTALL)
     if fenced_json:
         text = fenced_json.group(1).strip()
 
-    payload = json.loads(text)
+    payload = normalize_attribute_payload(json.loads(text))
     if hasattr(ClassificationResult, "model_validate"):
         return ClassificationResult.model_validate(payload)
     return ClassificationResult.parse_obj(payload)
