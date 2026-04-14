@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes indeterminate-progress {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.indeterminate-progress {
+  animation: indeterminate-progress 1.4s ease-in-out infinite;
+}

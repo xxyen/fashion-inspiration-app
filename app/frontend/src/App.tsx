@@ -319,11 +319,42 @@ function App() {
             </div>
 
             <button
-              className="mt-5 w-full rounded-md bg-neutral-900 px-4 py-3 font-semibold text-white disabled:cursor-wait disabled:opacity-60"
+              className="mt-5 flex w-full items-center justify-center gap-2 rounded-md bg-neutral-900 px-4 py-3 font-semibold text-white disabled:cursor-wait disabled:opacity-60"
               disabled={isUploading}
             >
-              {isUploading ? "Uploading..." : "Upload image"}
+              {isUploading ? (
+                <>
+                  <span
+                    className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+                    aria-hidden="true"
+                  />
+                  Analyzing image...
+                </>
+              ) : (
+                "Upload image"
+              )}
             </button>
+
+            {isUploading ? (
+              <div
+                aria-live="polite"
+                className="mt-4 rounded-lg border border-stone-200 bg-stone-50 p-4"
+                role="status"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-sm font-medium text-neutral-800">AI classification in progress</p>
+                  <p className="text-xs text-neutral-500">Usually a few seconds</p>
+                </div>
+                <div
+                  aria-label="Image classification progress"
+                  aria-valuetext="Classification is running"
+                  className="mt-3 h-2 overflow-hidden rounded-full bg-stone-200"
+                  role="progressbar"
+                >
+                  <div className="indeterminate-progress h-full w-1/2 rounded-full bg-emerald-600" />
+                </div>
+              </div>
+            ) : null}
 
             {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
           </form>
@@ -397,6 +428,7 @@ function App() {
                     className="aspect-[4/5] w-full object-cover"
                     src={getImageUrl(image.image_url)}
                     alt={image.description ?? "Fashion inspiration upload"}
+                    loading="lazy"
                   />
                   <div className="space-y-2 p-4">
                     <p className="font-medium leading-6">{image.designer || "Unknown designer"}</p>
@@ -446,6 +478,7 @@ function App() {
                   className="aspect-[4/5] w-full rounded-md object-cover"
                   src={getImageUrl(selectedImage.image_url)}
                   alt={selectedImage.description ?? "Selected fashion inspiration"}
+                  loading="lazy"
                 />
 
                 <section>

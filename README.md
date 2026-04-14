@@ -174,6 +174,14 @@ VITE_API_BASE_URL=http://localhost:8000
 
 If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placeholder metadata so upload and gallery flows still work locally.
 
+## UX and Scalability Notes
+
+The current proof of concept keeps the upload flow synchronous: the backend saves the image, runs classification, stores the metadata, and then returns the completed record. The frontend reflects this with an `Analyzing image...` upload state so users know the image is being processed rather than only transferred.
+
+For larger libraries, gallery images use lazy browser loading so off-screen images do not block the initial view. A production version would also add paginated image APIs and generated thumbnails so the grid does not fetch or render the full library at once.
+
+For slower classifiers, the next architectural step would be asynchronous classification: create the image record immediately with a `processing` status, show the image in the gallery right away, run multimodal classification in the background, then update the record to `ready` or `failed`. The UI could show processing badges, skeleton metadata, and a retry action for failed classifications.
+
 ## Next Steps
 
 1. Polish the assignment.
