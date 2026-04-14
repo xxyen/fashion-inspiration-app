@@ -12,11 +12,12 @@ The planned stack is:
 
 ```text
 frontend/          React + Tailwind app
+frontend/e2e/      Playwright end-to-end tests
 backend/           FastAPI app
 backend/app/schema.sql SQLite image metadata schema
 backend/uploads/   Future local upload storage
-eval/              Future evaluation dataset and scripts
-tests/             Future backend and e2e tests
+eval/              Evaluation dataset and scripts
+tests/backend/     Backend unit and integration tests
 ```
 
 ## Local Setup
@@ -50,7 +51,7 @@ DELETE /api/images/{image_id}
 `PATCH /api/images/{image_id}/annotations` updates human-entered designer tags and notes.
 `DELETE /api/images/{image_id}` removes the database record and the uploaded local image file.
 
-Uploaded images are classified through `backend/app/classifier.py`. The classifier currently returns placeholder metadata so the workflow is stable before connecting a real multimodal model.
+Uploaded images are classified through `backend/app/classifier.py` with the configured multimodal model. If no API key is configured, the classifier returns deterministic placeholder metadata so the upload and gallery workflow remains testable.
 
 Frontend:
 
@@ -69,6 +70,22 @@ Backend tests:
 ```bash
 ./backend/.venv/bin/pytest
 ```
+
+Frontend build:
+
+```bash
+cd frontend
+npm run build
+```
+
+End-to-end test:
+
+```bash
+cd frontend
+npm run test:e2e
+```
+
+The E2E test starts its own backend and frontend servers on `127.0.0.1:8010` and `127.0.0.1:5174`, uses a temporary SQLite database under `/tmp`, clears `OPENAI_API_KEY` so classification is deterministic, and runs with the locally installed Google Chrome browser.
 
 ## Evaluation
 
@@ -157,5 +174,4 @@ If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placehol
 
 ## Next Steps
 
-1. Add the labeled Pexels test set.
-2. Add end-to-end tests.
+1. Polish the assignment.
