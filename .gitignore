@@ -14,6 +14,6 @@ backend/uploads/*
 !backend/uploads/.gitkeep
 backend/fashion.db
 eval/results.json
-eval/labels.json
-eval/labels.draft.json
+eval/labels.draft*.json
+eval/raw_images/
 *.pyc

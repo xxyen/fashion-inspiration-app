@@ -1,0 +1,2619 @@
+[
+  {
+    "image": "001.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit is a long, flowing purple dress with intricate gold and green embroidery along the front, sleeves, and hem. It features a V-neckline and long sleeves, with a cinched waist that accentuates the silhouette. The dress has a slit that reveals part of the leg, adding a subtle touch of allure. The overall look is elegant and regal, suitable for formal or semi-formal occasions.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "elegant",
+        "bohemian"
+      ],
+      "material": [],
+      "color_palette": [
+        "purple",
+        "gold"
+      ],
+      "pattern": [
+        "embroidered"
+      ],
+      "season": "fall",
+      "occasion": [
+        "formal"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "002.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a bright yellow oversized T-shirt dress paired with a black oversized hoodie that has white graphic prints. The look is completed with black distressed patterned tights and chunky white sneakers, creating a bold and edgy style. The wearer accessorizes with long, decorated nails and carries a plastic shopping bag and a small handbag, emphasizing a youthful and urban vibe.",
+    "expected": {
+      "garment_type": [
+        "dress",
+        "hoodie",
+        "tights"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "cotton "
+      ],
+      "color_palette": [
+        "yellow",
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "solid",
+        "graphic",
+        "distressed"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "003.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a long black skirt paired with a black blazer over a white top. The look is completed with white sneakers, creating a balanced mix of formal and casual elements. The blazer has a tailored fit with button details on the sleeves, while the skirt flows down to the ankles, offering a modest and elegant silhouette. The white sneakers add a sporty and comfortable touch, making the outfit suitable for everyday wear in an urban environment.",
+    "expected": {
+      "garment_type": [
+        "blazer",
+        "skirt",
+        "top"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual",
+        "work"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "004.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit is a glamorous off-the-shoulder evening gown featuring a deep neckline and a high slit on one side. The dress is covered in dark green sequins that create a sparkling effect, adding a luxurious and elegant touch. The silhouette is form-fitting, accentuating the wearer's figure, and the dress is paired with black pointed-toe heels with ankle straps. The overall look is sophisticated and suitable for formal occasions.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "evening",
+        "formal"
+      ],
+      "material": [
+        "sequins",
+        "fabric"
+      ],
+      "color_palette": [
+        "black"
+      ],
+      "pattern": [
+        "sparkling",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "005.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a light beige oversized button-up shirt tied at the waist over a bright blue top. The model pairs this with high-waisted blue denim jeans. Accessories include large black sunglasses and a teal wristwatch, adding a modern touch to the relaxed ensemble. The overall look is comfortable and stylish, suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "top",
+        "jeans"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "beige",
+        "blue",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring or fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "006.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a loose-fitting, white, long-sleeve top with a colorful patch on the back, paired with black pants. The top has a relaxed, oversized silhouette with wide sleeves and a casual, comfortable vibe. The patch on the back adds a bold graphic element to the otherwise solid-colored garment. The overall look is minimalistic yet artistic, suitable for casual streetwear.",
+    "expected": {
+      "garment_type": [
+        "top",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "black",
+        "red",
+        "yellow",
+        "green"
+      ],
+      "pattern": [
+        "solid",
+        "graphic"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "007.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual yet chic look with a loose-fitting white button-up shirt paired with high-waisted blue denim jeans. The shirt has a relaxed fit with rolled-up sleeves, contributing to a laid-back style. Accessories include a wide-brimmed straw hat and bold red cat-eye sunglasses, adding a touch of personality and flair. The look is completed with black pointed-toe shoes, balancing comfort and style.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "jeans"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "cotton",
+        "denim"
+      ],
+      "color_palette": [
+        "white",
+        "blue"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "008.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a young woman wearing a brown oversized bomber jacket with green striped cuffs over a cropped beige turtleneck sweater. She pairs this with high-waisted, loose-fitting brown pants that have a subtle star pattern. The look is accessorized with large round glasses and a maroon shoulder bag, creating a casual streetwear vibe suitable for cooler weather.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "sweater",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [
+        "knit",
+        "cotton"
+      ],
+      "color_palette": [
+        "brown",
+        "beige",
+        "green"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "009.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with an oversized light blue denim jacket paired with matching denim jeans. Underneath, a plain white t-shirt adds a simple, clean layer. The look is accessorized with dark sunglasses and white sneakers with orange accents, creating a relaxed and youthful vibe.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "jeans",
+        "shirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "blue",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "010.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a loose-fitting, long-sleeve dark graphic sweatshirt paired with light tan cargo pants. The look is completed with black and orange Nike sneakers, adding a sporty touch. The overall style is relaxed and comfortable, suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "sweatshirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "dark blue",
+        "tan"
+      ],
+      "pattern": [
+        "solid",
+        "graphic"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "011.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a cozy, oversized camel-colored cardigan worn over a white top, paired with loose-fitting dark brown cropped pants. The look is accessorized with a green tote bag, a white clutch, round glasses, and layered pearl necklaces. The footwear consists of black loafers with white socks, creating a casual yet polished streetwear vibe.",
+    "expected": {
+      "garment_type": [
+        "cardigan",
+        "pants",
+        "top"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "camel",
+        "white",
+        "dark brown",
+        "green"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "012.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a young man wearing a long, grey textured overcoat layered over a light blue button-up shirt. He pairs this with slim black pants and black leather ankle boots with a buckle detail. Accessories include round black sunglasses and a black wristwatch, adding a modern and stylish touch. The overall look is polished yet casual, suitable for cooler weather.",
+    "expected": {
+      "garment_type": [
+        "overcoat",
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "casual",
+        "streetwear"
+      ],
+      "material": [
+        "wool",
+        "cotton"
+      ],
+      "color_palette": [
+        "grey",
+        "blue",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "013.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a sleek, modern men's suit with a subtle patterned black blazer that has a wrap-style front and satin lapels, paired with slim-fit black trousers. The look is completed with a crisp white shirt underneath and black dress shoes, creating a sophisticated and polished ensemble suitable for formal or high-fashion events.",
+    "expected": {
+      "garment_type": [
+        "suit",
+        "blazer",
+        "trousers",
+        "shirt"
+      ],
+      "style": [
+        "formal"
+      ],
+      "material": [],
+      "color_palette": [
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "geometric"
+      ],
+      "season": "fall",
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "adult"
+      ],
+      "location_context": {
+        "scene": "runway"
+      }
+    }
+  },
+  {
+    "image": "014.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a bold and vibrant combination of a bright lime green suit with a floral patterned lining inside the jacket, paired with a striking red shirt and a matching red wide-brimmed hat. The look is completed with white sneakers and round sunglasses, creating a confident and eye-catching street style ensemble.",
+    "expected": {
+      "garment_type": [
+        "suit",
+        "shirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "green",
+        "red"
+      ],
+      "pattern": [
+        "floral",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "015.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a monochromatic look with a mustard yellow short-sleeve button-up shirt paired with matching wide-leg trousers. The shirt is worn open over a white t-shirt, creating a layered effect. The ensemble is accessorized with a white cap and white sneakers, adding a casual and sporty touch. The overall silhouette is relaxed and slightly oversized, suitable for a streetwear style.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "trousers",
+        "shirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "yellow",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "016.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a streetwear-inspired look with a black leather jacket layered over a striped knit sweater in neutral tones. The individual wears burnt orange cargo pants with multiple pockets, paired with a matching burnt orange beanie and a bright orange crossbody bag that adds a pop of color. The overall look combines utilitarian elements with bold accessories, creating a casual yet stylish urban ensemble.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "sweater",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "leather",
+        "knit",
+        "cotton"
+      ],
+      "color_palette": [
+        "black",
+        "orange"
+      ],
+      "pattern": [
+        "striped",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "017.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a black leather jacket with silver zipper details, worn over a black garment. The look is edgy and modern, suitable for casual streetwear. The leather jacket has a slightly fitted silhouette with structured shoulders, paired with a black skirt or dress underneath. The overall style is minimalistic yet bold, emphasizing a dark color palette and a cool, urban vibe.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "skirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "leather"
+      ],
+      "color_palette": [
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "018.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a modern streetwear look with a black leather biker jacket layered over a black turtleneck. The wearer pairs this with light blue distressed skinny jeans and white sneakers, accessorized with a silver chain necklace, black sunglasses, and a small black crossbody bag. The overall look is edgy and urban, suitable for casual outings.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "jeans"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "leather",
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "019.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a man wearing a dark blue denim jacket paired with matching dark blue denim jeans. Underneath the jacket, he wears a light-colored, possibly off-white, button-up shirt with a textured fabric. The look is casual and relaxed, with the denim jacket and jeans creating a coordinated, classic streetwear style.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "shirt",
+        "jeans"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "blue",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "020.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a denim jacket and high-waisted wide-leg denim pants in a faded blue wash. The model pairs these with a black cropped top, white sneakers, and a black belt with a silver buckle. The denim jacket has a relaxed, slightly oversized fit, contributing to the laid-back vibe. The overall look is youthful and modern, suitable for casual urban settings.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "pants",
+        "top"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "blue",
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "021.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a cozy oversized beige teddy jacket layered over a fitted black crop top. The bottom consists of a short denim mini skirt with a white belt, paired with bold black patterned tights that add an edgy touch. The look is accessorized with sunglasses and a simple necklace, creating a youthful and trendy ensemble suitable for fall.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "top",
+        "skirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim"
+      ],
+      "color_palette": [
+        "beige",
+        "black",
+        "blue",
+        "white"
+      ],
+      "pattern": [
+        "solid",
+        "geometric"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "022.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a plain white short-sleeve t-shirt paired with loose-fitting, faded green jeans. The individual accessorizes with sunglasses, a necklace, and a wristwatch, completing the look with chunky sneakers. The overall style is relaxed and suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "jeans",
+        "sneakers"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "green"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "023.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a light blue oversized denim jacket paired with matching denim jeans. The model wears a black t-shirt underneath the jacket, complemented by black chunky lace-up boots. The look is accessorized with round sunglasses, adding a cool, urban vibe.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "jeans",
+        "shirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "cotton",
+        "leather"
+      ],
+      "color_palette": [
+        "blue",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "024.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a man wearing a brown leather jacket over a black shirt paired with black pants. The look is completed with a rugged, casual vibe suitable for motorcycle riding, emphasizing a classic and timeless style.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "leather",
+        "cotton"
+      ],
+      "color_palette": [
+        "brown",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "025.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit is a long, elegant evening gown featuring a sheer overlay adorned with intricate beadwork and sequins arranged in flowing, symmetrical patterns. The dress has a high neckline and long sleeves made of a translucent fabric, creating a delicate and sophisticated look. The base color is a soft nude or blush tone, complemented by silver and gold embellishments that add a shimmering effect. The gown fits closely to the body, accentuating the wearer's figure while maintaining a graceful silhouette.",
+    "expected": {
+      "garment_type": [
+        "evening"
+      ],
+      "style": [
+        "formal",
+        "elegant"
+      ],
+      "material": [
+        "fabric"
+      ],
+      "color_palette": [
+        "silver",
+        "gold"
+      ],
+      "pattern": [
+        "embellished",
+        "linear"
+      ],
+      "season": "spring",
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "026.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a black leather biker jacket with quilted detailing on the sleeves, paired with a black t-shirt underneath. The look is completed with fitted gray jeans. Accessories include a silver chain bracelet, a pendant necklace, and black-framed glasses. The overall style is edgy and modern, suitable for casual streetwear.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "shirt",
+        "jeans"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "leather",
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "black",
+        "gray"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "027.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a beige and white varsity-style jacket paired with off-white cargo pants. The jacket has a soft, likely cotton or fleece material with beige sleeves and a white body, complemented by a white t-shirt underneath. The cargo pants are loose-fitting with multiple pockets, adding a utilitarian touch. The look is completed with chunky sneakers in beige, white, and black tones, and dark sunglasses, giving a modern and relaxed vibe suitable for a young adult.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "pants",
+        "shirt",
+        "sneakers"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [
+        "cotton",
+        "fleece"
+      ],
+      "color_palette": [
+        "beige",
+        "white",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "028.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a cozy, cream-colored cable knit sweater with intricate patterns including braided and diamond shapes. The sweater has a relaxed fit with a ribbed crew neckline, providing a warm and comfortable look suitable for cooler weather.",
+    "expected": {
+      "garment_type": [
+        "sweater"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "knit"
+      ],
+      "color_palette": [
+        "white"
+      ],
+      "pattern": [
+        "knit"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "029.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a vibrant, strapless, floor-length satin gown in a bold fuchsia color. The dress has a fitted bodice with structured detailing and a slight slit on one side, creating an elegant and sophisticated silhouette. The wearer pairs the gown with delicate, strappy silver heels, complementing the formal and glamorous look.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "formal",
+        "evening"
+      ],
+      "material": [
+        "satin"
+      ],
+      "color_palette": [
+        "pink"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": null,
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "030.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit consists of a short-sleeve white button-up shirt paired with light gray cargo pants and white sneakers. The look is accessorized with a black crossbody bag and sunglasses, creating a casual and comfortable streetwear style suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "gray",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "031.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a short-sleeve white button-up shirt paired with light gray cargo pants. The look is accessorized with a black crossbody bag and reflective sunglasses, complemented by white sneakers. The overall style is relaxed and practical, suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "gray",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "032.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a dark denim jacket and matching pants, both adorned with subtle geometric patterns in a lighter shade. The jacket has a relaxed, oversized fit with button closures and chest pockets, layered over a plain white t-shirt. The pants are loose-fitting, complementing the casual streetwear vibe of the ensemble.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "pants",
+        "shirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "blue",
+        "white"
+      ],
+      "pattern": [
+        "geometric"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "033.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a monochromatic white ensemble consisting of a tailored blazer with a deep neckline and wide-leg trousers. The look is minimalist and elegant, emphasizing clean lines and a relaxed yet sophisticated silhouette. The blazer is worn without a visible top underneath, adding a bold and modern edge to the outfit. The wide-leg pants contribute to a flowing, comfortable fit, suitable for a stylish urban setting.",
+    "expected": {
+      "garment_type": [
+        "blazer",
+        "trousers"
+      ],
+      "style": [
+        "minimalist",
+        "modern"
+      ],
+      "material": [],
+      "color_palette": [
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "034.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a black denim jacket worn over a plain white t-shirt. The jacket has a slightly oversized fit with rolled-up sleeves, paired with black pants. The look is accessorized with a wristwatch and a bracelet, suitable for a young adult in an urban environment.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "035.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a fitted black short-sleeve button-up shirt paired with oversized dark blue denim jeans. The shirt has a structured collar and a slightly tailored fit, while the jeans have a wide-leg silhouette that creates a relaxed and casual look. The overall style is modern streetwear with a focus on comfort and a youthful vibe.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "black",
+        "blue"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "036.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a light pink oversized hoodie paired with vibrant, patterned pants in shades of purple and blue with paisley and floral designs. The look is accessorized with a beige knit beanie, black round sunglasses, and white sneakers with purple socks. The overall vibe is relaxed and trendy, suitable for a young adult in an urban setting during the fall season.",
+    "expected": {
+      "garment_type": [
+        "hoodie",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "pink",
+        "purple",
+        "blue"
+      ],
+      "pattern": [
+        "floral"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "037.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit is a floor-length, lavender tulle gown featuring a deep V-neckline and ruffled detailing along the neckline and shoulders. The dress has a high slit on one side, adding a touch of allure, and is cinched at the waist with a sparkling, embellished belt. The overall look is ethereal and elegant, suitable for formal occasions or high-fashion events.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "evening",
+        "formal"
+      ],
+      "material": [
+        "tulle"
+      ],
+      "color_palette": [
+        "purple"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "formal"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "038.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual, vibrant summer look with a matching short-sleeve button-up shirt and shorts set in a colorful tropical print. Underneath, the model wears a fitted ribbed yellow tank top. The look is accessorized with white athletic socks, beige sneakers, sunglasses, and a smartwatch, creating a sporty yet relaxed streetwear vibe.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "shorts",
+        "top"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "green",
+        "yellow"
+      ],
+      "pattern": [
+        "tropical",
+        "solid"
+      ],
+      "season": "summer",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "039.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a beige oversized coat layered over a black and white striped crop top. The wearer pairs this with high-waisted black wide-leg pants and black-and-white checkered sneakers. Accessories include clear-framed glasses, blue statement earrings, a brown shoulder bag, and a camera hanging around the neck, adding a practical and trendy touch.",
+    "expected": {
+      "garment_type": [
+        "coat",
+        "top",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "beige",
+        "black",
+        "brown"
+      ],
+      "pattern": [
+        "striped",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "040.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a loose-fitting white cropped shirt paired with oversized light blue denim jeans. The jeans have a relaxed, wide-leg silhouette that adds to the laid-back vibe. The look is completed with black and white sneakers, enhancing the casual and comfortable style suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "jeans"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [
+        "denim",
+        "cotton"
+      ],
+      "color_palette": [
+        "white",
+        "blue"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "041.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a sleeveless floral top with a high neckline, paired with light blue high-waisted straight-leg jeans. The look is completed with black and white casual sneakers and a black belt, creating a relaxed yet stylish streetwear vibe.",
+    "expected": {
+      "garment_type": [
+        "top",
+        "jeans"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "red",
+        "blue"
+      ],
+      "pattern": [
+        "floral",
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "042.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a cozy, oversized blue knit sweater paired with light blue denim jeans. The look is casual and comfortable, suitable for a relaxed indoor or casual outdoor setting. The sweater has a ribbed texture and a hood, adding to the laid-back, warm aesthetic. The jeans are a classic fit, complementing the sweater without overpowering it.",
+    "expected": {
+      "garment_type": [
+        "sweater",
+        "jeans"
+      ],
+      "style": [
+        "casual",
+        "streetwear"
+      ],
+      "material": [
+        "knit",
+        "denim"
+      ],
+      "color_palette": [
+        "blue"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "043.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a dark gray zip-up hoodie paired with black cargo pants that have padded knee details. The look is completed with white sneakers featuring black stripes, creating a relaxed and comfortable style suitable for everyday wear.",
+    "expected": {
+      "garment_type": [
+        "hoodie",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "gray",
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "044.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual, layered look with a mustard yellow long-sleeve shirt paired with a navy blue puffer vest. The individual is also wearing dark blue jeans and accessorizes with a tan wide-brimmed hat and dark sunglasses. The overall style is relaxed and suitable for cooler weather, combining comfort with a touch of ruggedness.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "vest",
+        "jeans"
+      ],
+      "style": [
+        "casual",
+        "streetwear"
+      ],
+      "material": [
+        "cotton",
+        "synthetic",
+        "denim"
+      ],
+      "color_palette": [
+        "yellow",
+        "blue"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult",
+        "adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "045.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a young man wearing a blue and black checkered short-sleeve t-shirt paired with black pants. He accessorizes with sunglasses, a gold watch, and a bracelet, and carries a patterned duffle bag with brown leather accents. The look is completed with white sneakers, creating a casual yet stylish streetwear ensemble.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "blue",
+        "black"
+      ],
+      "pattern": [
+        "checkered"
+      ],
+      "season": null,
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "046.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features an oversized black leather jacket paired with fitted black skinny jeans and chunky black ankle boots. The look is casual and edgy, suitable for cooler weather, with a focus on layering and comfort. The overall style is modern streetwear with a slightly grunge influence, perfect for a young adult in an urban setting during the fall season.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "jeans"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "leather",
+        "denim"
+      ],
+      "color_palette": [
+        "black"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "047.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a striking, voluminous orange ensemble consisting of a long-sleeved top with a front knot detail that reveals the midriff, paired with a high-waisted, floor-length skirt with dramatic draping and a high slit that showcases the legs. The look is completed with bright turquoise high heels, adding a bold contrast to the monochromatic garment. The fabric appears to be lightweight with a slight sheen, contributing to the fluidity and movement of the design.",
+    "expected": {
+      "garment_type": [
+        "top",
+        "skirt"
+      ],
+      "style": [
+        "evening"
+      ],
+      "material": [
+        "fabric"
+      ],
+      "color_palette": [
+        "orange"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "adult"
+      ],
+      "location_context": {
+        "scene": "runway"
+      }
+    }
+  },
+  {
+    "image": "048.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a striking, oversized orange dress with a glossy finish, characterized by voluminous sleeves and a high slit that reveals the model's leg. The dress has a gathered, ruched design around the waist and chest, creating a dynamic and flowing silhouette. The look is completed with bright turquoise high-heeled shoes, adding a bold contrast to the vibrant orange dress.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "evening"
+      ],
+      "material": [
+        "fabric"
+      ],
+      "color_palette": [
+        "orange"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "adult"
+      ],
+      "location_context": {
+        "scene": "runway"
+      }
+    }
+  },
+  {
+    "image": "049.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a layered streetwear look with a yellow hoodie underneath a blue and yellow plaid jacket. The pants are pinstriped and cropped above the ankle, paired with argyle socks and colorful high-top sneakers in red, blue, black, and white. The look is accessorized with round glasses and a silver ring, creating a youthful and urban vibe.",
+    "expected": {
+      "garment_type": [
+        "hoodie",
+        "jacket",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "yellow",
+        "blue",
+        "black",
+        "red"
+      ],
+      "pattern": [],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "050.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a cozy, thick cable-knit sweater in a deep blue color, paired with a black and white knit beanie with a pom-pom on top. The sweater has a relaxed fit, suitable for cooler weather, and is layered over a red shirt that peeks out at the neckline. The overall look is casual and comfortable, ideal for outdoor activities in a natural setting.",
+    "expected": {
+      "garment_type": [
+        "sweater"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "knit"
+      ],
+      "color_palette": [
+        "blue",
+        "black",
+        "red"
+      ],
+      "pattern": [
+        "striped"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual",
+        "outdoor"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "051.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a cozy, camel-colored cable knit sweater paired with light blue, slightly cropped denim jeans. The look is accessorized with a large woven straw tote bag, which holds a folded knit garment, adding texture and a natural element to the ensemble. The overall style is casual and comfortable, suitable for everyday wear in cooler weather.",
+    "expected": {
+      "garment_type": [
+        "sweater",
+        "jeans"
+      ],
+      "style": [
+        "casual",
+        "minimalist"
+      ],
+      "material": [
+        "knit",
+        "denim"
+      ],
+      "color_palette": [
+        "camel",
+        "blue",
+        "beige"
+      ],
+      "pattern": [
+        "knit",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "052.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a cozy, oversized white cable-knit sweater paired with relaxed-fit blue denim jeans. The sweater has a textured pattern with a high neckline and long sleeves, creating a comfortable and casual look. The jeans are classic blue denim with a slightly loose fit, complementing the laid-back style of the sweater. The overall ensemble is perfect for a casual, cool-weather setting.",
+    "expected": {
+      "garment_type": [
+        "sweater",
+        "jeans"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "knit",
+        "denim"
+      ],
+      "color_palette": [
+        "white",
+        "blue"
+      ],
+      "pattern": [
+        "knit",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "indoor"
+      }
+    }
+  },
+  {
+    "image": "053.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a black velvet long jacket with intricate gold embroidery in floral and leafy patterns along the front, collar, and hem. The jacket has a high collar and a straight, tailored fit. It is paired with slim black trousers and dark brown leather shoes, creating a formal and elegant look.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "trousers"
+      ],
+      "style": [
+        "formal"
+      ],
+      "material": [
+        "velvet"
+      ],
+      "color_palette": [
+        "black",
+        "gold",
+        "brown"
+      ],
+      "pattern": [
+        "embroidered"
+      ],
+      "season": "fall",
+      "occasion": [
+        "formal",
+        "evening"
+      ],
+      "consumer_profile": [
+        "adult"
+      ],
+      "location_context": {
+        "scene": "runway"
+      }
+    }
+  },
+  {
+    "image": "054.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a white, fitted, sleeveless top with thin straps paired with a flowy, mid-length skirt adorned with a vibrant red and pink floral pattern. The look is completed with white heeled sandals, creating a fresh and feminine ensemble suitable for warm weather.",
+    "expected": {
+      "garment_type": [
+        "top",
+        "skirt"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "red",
+        "pink"
+      ],
+      "pattern": [
+        "floral"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "055.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a loose, cream-colored dress with vibrant floral embroidery on the sleeves and shoulders. The dress has a relaxed, comfortable fit with long sleeves and a slightly flared hemline, creating a casual yet charming look. The floral embroidery adds a touch of bohemian and folk-inspired style, making the garment visually interesting and colorful against the neutral base. The wearer is seated outdoors in a natural setting, holding a small bouquet of daisies, which complements the natural and earthy vibe of the outfit.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "bohemian",
+        "casual"
+      ],
+      "material": [
+        "cotton"
+      ],
+      "color_palette": [
+        "white",
+        "red",
+        "green",
+        "blue"
+      ],
+      "pattern": [
+        "floral"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "056.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a long, loose-fitting white dress with voluminous sleeves. The dress is adorned with colorful floral embroidery on the upper sleeves and shoulders, adding a delicate and artistic touch. The wearer pairs the dress with chunky black and white sneakers, blending a casual and comfortable vibe with the traditional, feminine embroidery. The overall look is relaxed and airy, suitable for a casual outdoor setting.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "bohemian",
+        "casual"
+      ],
+      "material": [
+        "cotton"
+      ],
+      "color_palette": [
+        "white",
+        "red",
+        "green",
+        "blue"
+      ],
+      "pattern": [
+        "floral"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "057.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a black graphic t-shirt paired with off-white, slightly loose-fitting pants that have a raw hem. The look is completed with black lace-up combat boots and dark sunglasses, giving it an edgy and youthful vibe.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "graphic",
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "058.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a vibrant red knit cardigan paired with a matching red beret, creating a bold and cohesive look. Underneath, the model wears a black top with lace-trimmed sleeves that add a delicate, feminine touch. The dark blue denim pants provide a casual and comfortable base, contrasting nicely with the bright red elements. The overall style is cozy and warm, suitable for colder weather, with an emphasis on layering and texture.",
+    "expected": {
+      "garment_type": [
+        "cardigan",
+        "top",
+        "pants"
+      ],
+      "style": [
+        "casual",
+        "streetwear"
+      ],
+      "material": [
+        "knit",
+        "denim"
+      ],
+      "color_palette": [
+        "red",
+        "black",
+        "blue"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "winter",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "059.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a luxurious faux fur jacket with a spotted pattern in shades of white, black, and beige, paired with a white turtleneck sweater underneath. The look is accessorized with a white beret and stylish sunglasses, complemented by high-waisted dark denim jeans. The ensemble exudes a chic winter vibe suitable for cold weather.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "jeans"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "knit",
+        "denim"
+      ],
+      "color_palette": [
+        "white",
+        "black",
+        "beige"
+      ],
+      "pattern": [],
+      "season": "winter",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "060.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a white long-sleeve top and matching white jogger pants, paired with a black puffer vest. The look is accessorized with a colorful plaid backpack and yellow work boots, creating a contrast with the neutral clothing. The overall style is relaxed and practical, suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "top",
+        "vest",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "black",
+        "yellow"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "061.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual winter look with a brown leather jacket layered over a white sweater. The model pairs this with beige cargo pants and olive green lace-up boots suitable for snowy conditions. Accessories include a beige knit beanie, round sunglasses, and a brown plaid scarf, adding warmth and style to the ensemble.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "sweater",
+        "pants"
+      ],
+      "style": [
+        "casual",
+        "streetwear"
+      ],
+      "material": [
+        "leather",
+        "knit",
+        "cotton"
+      ],
+      "color_palette": [
+        "brown",
+        "white",
+        "beige"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "winter",
+      "occasion": [
+        "casual",
+        "outdoor"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "062.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a colorful, loosely knit sweater with a mix of pastel and bright colors including blue, red, yellow, and pink. The sweater has an oversized, relaxed fit with wide sleeves. It is paired with a light-wash, pleated mini skirt that adds a playful and youthful touch. The model accessorizes with bold white-framed sunglasses with red lenses, enhancing the trendy and streetwear vibe of the look.",
+    "expected": {
+      "garment_type": [
+        "sweater",
+        "skirt"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "knit",
+        "denim"
+      ],
+      "color_palette": [
+        "blue",
+        "red",
+        "yellow",
+        "pink",
+        "white"
+      ],
+      "pattern": [
+        "striped"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "063.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual and chic look with a loose-fitting, short-sleeve striped top paired with a high-waisted, pleated midi skirt in a deep green color. The top has a nautical vibe with horizontal white and gray stripes and a black ribbon detail at the neckline. The skirt adds a touch of elegance with its flowing pleats. The look is completed with platform lace-up shoes in a matching striped pattern and a large straw hat, adding a summery, relaxed feel.",
+    "expected": {
+      "garment_type": [
+        "top",
+        "skirt"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "gray",
+        "black",
+        "green"
+      ],
+      "pattern": [
+        "striped",
+        "solid"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "064.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a lightweight, long-sleeve blouse with a pink and black leaf pattern paired with a short, floral-patterned skirt. The look is accessorized with a large straw hat, a small white quilted crossbody bag, and black-and-white striped platform shoes. The overall style is casual and playful, suitable for warm weather.",
+    "expected": {
+      "garment_type": [
+        "blouse",
+        "skirt"
+      ],
+      "style": [
+        "casual",
+        "bohemian"
+      ],
+      "material": [],
+      "color_palette": [
+        "pink",
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "floral"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "065.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a bright blue knee-length coat worn over a grey dress, paired with purple tights and striking red knee-high boots. The look is accessorized with a red beret and a matching red handbag, complemented by a bouquet of red tulips. The ensemble is styled for cold weather, with a mix of vibrant and neutral colors creating a cheerful yet practical winter look.",
+    "expected": {
+      "garment_type": [
+        "coat",
+        "dress",
+        "tights",
+        "boots"
+      ],
+      "style": [
+        "casual",
+        "streetwear"
+      ],
+      "material": [],
+      "color_palette": [
+        "blue",
+        "grey",
+        "purple",
+        "red",
+        "beige"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "winter",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "066.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a light, airy dress with a delicate floral pattern. The dress has long, sheer puff sleeves and a square neckline with subtle ruffle detailing. The fabric appears lightweight and flowy, suitable for warm weather. The model accessorizes with a bright blue headband and holds a white cloth adorned with vibrant floral embroidery, adding a touch of traditional or folk-inspired detail to the look.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "bohemian"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "green"
+      ],
+      "pattern": [
+        "floral"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  },
+  {
+    "image": "067.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a fitted beige turtleneck sweater paired with a high-waisted, knee-length burgundy pencil skirt. The look is accessorized with a light beige faux fur coat draped over one shoulder, a matching beige beret, and pink gloves. The footwear consists of black ankle boots with a chunky heel. The ensemble is stylish and warm, suitable for cold weather, blending classic and chic elements with a festive winter backdrop.",
+    "expected": {
+      "garment_type": [
+        "sweater",
+        "skirt",
+        "coat"
+      ],
+      "style": [
+        "casual"
+      ],
+      "material": [
+        "knit"
+      ],
+      "color_palette": [
+        "beige",
+        "burgundy"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "068.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual and minimalist style with a plain white short-sleeve t-shirt paired with mustard-colored pants. The look is accessorized with black sunglasses and red sneakers, creating a youthful and relaxed streetwear vibe. The overall silhouette is slim and fitted, suitable for everyday urban wear.",
+    "expected": {
+      "garment_type": [
+        "shirt",
+        "pants"
+      ],
+      "style": [
+        "streetwear",
+        "casual"
+      ],
+      "material": [],
+      "color_palette": [
+        "white",
+        "orange"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "069.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit features a casual streetwear look with a cozy, oversized beige sherpa jacket layered over a black turtleneck. The individual pairs this with light-wash, distressed jeans that have graphic text details, and white sneakers. Accessories include a black beanie, white-framed sunglasses, and subtle jewelry, creating a modern urban vibe.",
+    "expected": {
+      "garment_type": [
+        "jacket",
+        "jeans"
+      ],
+      "style": [
+        "streetwear"
+      ],
+      "material": [
+        "denim",
+        "knit"
+      ],
+      "color_palette": [
+        "beige",
+        "black",
+        "white"
+      ],
+      "pattern": [
+        "solid"
+      ],
+      "season": "fall",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "street"
+      }
+    }
+  },
+  {
+    "image": "070.jpg",
+    "source": "pexels",
+    "source_url": "",
+    "photographer": "",
+    "draft_description": "The outfit is a loose-fitting, long white dress with voluminous sleeves. It features intricate floral embroidery in multiple colors along the neckline, sleeves, and cuffs, adding a delicate and artisanal touch. The dress has a relaxed, bohemian vibe, suitable for a casual and natural setting.",
+    "expected": {
+      "garment_type": [
+        "dress"
+      ],
+      "style": [
+        "bohemian"
+      ],
+      "material": [
+        "cotton"
+      ],
+      "color_palette": [
+        "white",
+        "blue",
+        "red",
+        "green",
+        "black"
+      ],
+      "pattern": [
+        "embroidered"
+      ],
+      "season": "spring",
+      "occasion": [
+        "casual"
+      ],
+      "consumer_profile": [
+        "young adult"
+      ],
+      "location_context": {
+        "scene": "outdoor"
+      }
+    }
+  }
+]

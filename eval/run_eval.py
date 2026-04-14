@@ -23,6 +23,51 @@ LIST_FIELDS = [
 
 SCALAR_FIELDS = ["season"]
 
+SEASON_ALIASES = {
+    "fall": {"fall", "autumn"},
+    "winter": {"winter", "cold weather"},
+    "summer": {"summer", "warm weather"},
+    "spring": {"spring"},
+    "transitional": {"transitional", "spring/fall", "fall/spring", "spring or fall", "fall or spring"},
+}
+
+SCENE_ALIASES = {
+    "urban street": {
+        "street",
+        "urban street",
+        "city street",
+        "sidewalk",
+        "urban",
+        "street scene",
+        "outdoor street",
+        "city sidewalk",
+    },
+    "studio": {
+        "studio",
+        "photo studio",
+        "indoor studio",
+        "plain background",
+        "studio portrait",
+    },
+    "runway": {"runway", "catwalk", "fashion show"},
+    "market": {"market", "artisan market", "bazaar", "street market"},
+    "store": {"store", "shop", "retail", "boutique"},
+    "beach": {"beach", "coast", "seaside", "shore"},
+    "outdoor": {
+        "outdoor",
+        "outside",
+        "park",
+        "garden",
+        "nature",
+        "field",
+        "outdoor stairs",
+        "outdoor setting",
+    },
+    "event": {"event", "party", "festival", "concert"},
+    "travel": {"travel", "airport", "train station", "station"},
+    "indoor": {"indoor", "interior", "room", "hallway"},
+}
+
 
 def normalize(value) -> set[str]:
     if value is None:
@@ -32,9 +77,30 @@ def normalize(value) -> set[str]:
     return {str(value).strip().lower()}
 
 
+def canonicalize(value, aliases: dict[str, set[str]]):
+    values = normalize(value)
+    canonical_values = set()
+    for item in values:
+        matched = False
+        for canonical, alias_values in aliases.items():
+            if item == canonical or item in alias_values:
+                canonical_values.add(canonical)
+                matched = True
+                break
+        if not matched:
+            canonical_values.add(item)
+    return canonical_values
+
+
 def matches(predicted, expected) -> bool:
     predicted_values = normalize(predicted)
     expected_values = normalize(expected)
+    return bool(predicted_values and expected_values and predicted_values.intersection(expected_values))
+
+
+def canonical_matches(predicted, expected, aliases: dict[str, set[str]]) -> bool:
+    predicted_values = canonicalize(predicted, aliases)
+    expected_values = canonicalize(expected, aliases)
     return bool(predicted_values and expected_values and predicted_values.intersection(expected_values))
 
 
@@ -50,12 +116,19 @@ async def evaluate(labels_path: Path, images_dir: Path) -> dict:
     correct: dict[str, int] = {}
     details = []
 
-    async def evaluate_field(name: str, predicted, expected, row: dict) -> None:
+    async def evaluate_field(name: str, predicted, expected, row: dict, aliases: dict[str, set[str]] | None = None) -> None:
+        row["expected"][name] = expected
+        row["predicted"][name] = predicted
         if not normalize(expected):
             row["matches"][name] = "skipped"
             return
         totals[name] = totals.get(name, 0) + 1
-        is_match = matches(predicted, expected)
+        if aliases:
+            row["expected"][f"{name}_normalized"] = sorted(canonicalize(expected, aliases))
+            row["predicted"][f"{name}_normalized"] = sorted(canonicalize(predicted, aliases))
+            is_match = canonical_matches(predicted, expected, aliases)
+        else:
+            is_match = matches(predicted, expected)
         correct[name] = correct.get(name, 0) + int(is_match)
         row["matches"][name] = is_match
 
@@ -67,6 +140,8 @@ async def evaluate(labels_path: Path, images_dir: Path) -> dict:
         row = {
             "image": item["image"],
             "description": result.description,
+            "expected": {},
+            "predicted": {},
             "matches": {},
         }
 
@@ -74,13 +149,14 @@ async def evaluate(labels_path: Path, images_dir: Path) -> dict:
             await evaluate_field(field, predicted.get(field), expected.get(field), row)
 
         for field in SCALAR_FIELDS:
-            await evaluate_field(field, predicted.get(field), expected.get(field), row)
+            await evaluate_field(field, predicted.get(field), expected.get(field), row, SEASON_ALIASES)
 
         await evaluate_field(
             "location_scene",
             predicted.get("location_context", {}).get("scene"),
             expected.get("location_context", {}).get("scene"),
             row,
+            SCENE_ALIASES,
         )
         details.append(row)
 

@@ -126,6 +126,21 @@ trend_notes
 
 Exact city and country are treated as user-provided context, not visually reliable model targets for Pexels images.
 
+Current evaluation summary on 70 manually reviewed Pexels images:
+
+| Field | Accuracy | Notes |
+| --- | ---: | --- |
+| garment_type | 0.971 | Strong on visible garment categories. |
+| consumer_profile | 0.971 | Directionally useful, but still a subjective merchandising label. |
+| style | 0.943 | Good when expected labels allow multiple valid styles. |
+| color_palette | 0.943 | Strong on dominant visible colors. |
+| pattern | 0.912 | Good for obvious solid, striped, embroidered, and graphic patterns. |
+| season | 0.897 | Scored with light normalization such as autumn to fall. |
+| material | 0.837 | Evaluated only when manually labeled as visually apparent; 27 ambiguous cases were skipped. |
+| location_scene | 0.557 | Scored against a small controlled taxonomy rather than raw exact string matching. |
+
+Scene-level location is normalized before scoring because raw scene labels are open-ended. For example, street, city street, sidewalk, and urban street are normalized to urban street. This is more meaningful than exact string matching, but still imperfect because some scenes are genuinely ambiguous, such as outdoor versus urban street. The model performs best on visually grounded attributes such as garment type, color palette, pattern, and broad occasion. Trend notes and natural-language descriptions are reviewed qualitatively because they are open-ended inspiration aids rather than strict classification fields.
+
 ## Environment Variables
 
 Copy `.env.example` to `.env` and fill in `OPENAI_API_KEY` when the real multimodal classifier is connected.

@@ -108,7 +108,7 @@ async def classify_image(image_path: Path) -> ClassificationResult:
     try:
         from openai import OpenAI
 
-        client = OpenAI(api_key=OPENAI_API_KEY)
+        client = OpenAI(api_key=OPENAI_API_KEY, timeout=45)
         response = client.responses.create(
             model=OPENAI_MODEL,
             input=[
