@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import re
 from uuid import uuid4
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -37,6 +38,7 @@ class AnnotationUpdate(BaseModel):
 @app.on_event("startup")
 def on_startup() -> None:
     init_db()
+    rebuild_search_index()
 
 
 @app.get("/api/health")
@@ -103,9 +105,42 @@ def searchable_text(record: dict) -> str:
     return " ".join(piece for piece in pieces if piece).lower()
 
 
+def fts_query(value: str | None) -> str | None:
+    terms = re.findall(r"[\w]+", value or "")
+    if not terms:
+        return None
+    return " ".join(f"{term}*" for term in terms)
+
+
+def sync_search_index(connection, record: dict) -> None:
+    connection.execute("DELETE FROM image_search WHERE rowid = ?", (record["id"],))
+    connection.execute(
+        "INSERT INTO image_search(rowid, content) VALUES (?, ?)",
+        (record["id"], searchable_text(record)),
+    )
+
+
+def rebuild_search_index() -> None:
+    with get_connection() as connection:
+        rows = connection.execute("SELECT * FROM images").fetchall()
+        connection.execute("DELETE FROM image_search")
+        for row in rows:
+            sync_search_index(connection, serialize_image(row))
+
+
+def search_image_ids(connection, query: str | None) -> set[int] | None:
+    query_text = fts_query(query)
+    if not query_text:
+        return None if not query or not query.strip() else set()
+    rows = connection.execute(
+        "SELECT rowid FROM image_search WHERE image_search MATCH ?",
+        (query_text,),
+    ).fetchall()
+    return {row["rowid"] for row in rows}
+
+
 def record_matches(
     record: dict,
-    query: str | None,
     garment_type: str | None,
     style: str | None,
     material: str | None,
@@ -120,8 +155,7 @@ def record_matches(
 ) -> bool:
     metadata = record["metadata"]
     return (
-        (not query or normalize(query) in searchable_text(record))
-        and list_matches(metadata.get("garment_type", []), garment_type)
+        list_matches(metadata.get("garment_type", []), garment_type)
         and list_matches(metadata.get("style", []), style)
         and list_matches(metadata.get("material", []), material)
         and list_matches(metadata.get("color_palette", []), color_palette)
@@ -199,8 +233,10 @@ async def upload_image(
             "SELECT * FROM images WHERE id = ?",
             (cursor.lastrowid,),
         ).fetchone()
+        record = serialize_image(row)
+        sync_search_index(connection, record)
 
-    return serialize_image(row)
+    return record
 
 
 @app.get("/api/images")
@@ -219,6 +255,7 @@ def list_images(
     designer: str | None = None,
 ) -> list[dict]:
     with get_connection() as connection:
+        matched_ids = search_image_ids(connection, query)
         rows = connection.execute(
             "SELECT * FROM images ORDER BY created_at DESC, id DESC"
         ).fetchall()
@@ -226,9 +263,9 @@ def list_images(
     return [
         record
         for record in records
-        if record_matches(
+        if (matched_ids is None or record["id"] in matched_ids)
+        and record_matches(
             record,
-            query,
             garment_type,
             style,
             material,
@@ -307,7 +344,9 @@ def update_annotations(image_id: int, payload: AnnotationUpdate) -> dict:
             "SELECT * FROM images WHERE id = ?",
             (image_id,),
         ).fetchone()
-    return serialize_image(updated)
+        record = serialize_image(updated)
+        sync_search_index(connection, record)
+    return record
 
 
 @app.delete("/api/images/{image_id}")
@@ -321,6 +360,7 @@ def delete_image(image_id: int) -> dict[str, int | str]:
             raise HTTPException(status_code=404, detail="Image not found")
 
         connection.execute("DELETE FROM images WHERE id = ?", (image_id,))
+        connection.execute("DELETE FROM image_search WHERE rowid = ?", (image_id,))
 
     image_path = UPLOAD_DIR / row["filename"]
     if image_path.exists() and image_path.is_file():

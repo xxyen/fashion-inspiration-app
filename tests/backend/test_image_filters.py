@@ -6,7 +6,7 @@ def test_list_images_filters_and_dynamic_filter_options(tmp_path, monkeypatch):
 
     import app.db as db
     from app.db import init_db, get_connection
-    from app.main import get_filters, list_images
+    from app.main import get_filters, list_images, rebuild_search_index
 
     monkeypatch.setattr(db, "DATABASE_PATH", database_path)
     init_db()
@@ -47,8 +47,11 @@ def test_list_images_filters_and_dynamic_filter_options(tmp_path, monkeypatch):
                 "Paris",
             ),
         )
+    rebuild_search_index()
 
     assert len(list_images(query="artisan")) == 1
+    assert len(list_images(query="embroider")) == 1
+    assert len(list_images(query="!!!")) == 0
     assert len(list_images(garment_type="dress")) == 1
     assert len(list_images(country="France")) == 1
     assert len(list_images(style="streetwear")) == 0
@@ -64,7 +67,7 @@ def test_update_annotations_and_searches_human_notes(tmp_path, monkeypatch):
 
     import app.db as db
     from app.db import init_db, get_connection
-    from app.main import AnnotationUpdate, list_images, update_annotations
+    from app.main import AnnotationUpdate, list_images, rebuild_search_index, update_annotations
 
     monkeypatch.setattr(db, "DATABASE_PATH", database_path)
     init_db()
@@ -87,6 +90,7 @@ def test_update_annotations_and_searches_human_notes(tmp_path, monkeypatch):
             ),
         )
         image_id = cursor.lastrowid
+    rebuild_search_index()
 
     updated = update_annotations(
         image_id,

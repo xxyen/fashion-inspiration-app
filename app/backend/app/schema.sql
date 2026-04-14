@@ -19,3 +19,4 @@ CREATE INDEX IF NOT EXISTS idx_images_created_at ON images(created_at);
 CREATE INDEX IF NOT EXISTS idx_images_designer ON images(designer);
 CREATE INDEX IF NOT EXISTS idx_images_country ON images(country);
 
+CREATE VIRTUAL TABLE IF NOT EXISTS image_search USING fts5(content);

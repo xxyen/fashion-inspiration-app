@@ -66,6 +66,20 @@ Open `http://localhost:5173`.
 
 The frontend can upload an image with optional designer and location context, render a searchable image grid, filter by dynamically generated garment, consumer, location, time, and designer metadata options, and review AI metadata plus human designer notes in a selected-image detail panel.
 
+## Search Implementation
+
+Search uses SQLite FTS5. The backend keeps a separate `image_search` virtual table and indexes a combined text field for each image. That text includes the AI description, structured AI attributes, location fields, designer name, designer tags, and designer notes.
+
+When an image is uploaded, annotated, or deleted, the backend updates the FTS index. On startup, the app rebuilds the index from existing image records so older data can still be searched.
+
+| Search input | What happens |
+| --- | --- |
+| `embroidered neckline` | Tokenized into FTS terms and matched against indexed text. |
+| `artisan` | Can match AI trend notes, designer tags, or designer notes. |
+| `paris` | Can match user-provided location fields. |
+
+This is better than simple in-memory string search because SQLite handles tokenized full-text matching and avoids scanning all searchable text in Python. It still has limits: it does not understand true semantic meaning, does not handle every synonym, and does not rank results by field importance yet. A production version could add weighted ranking, typo tolerance, and embedding search for natural queries such as `soft oversized vacation look`.
+
 Backend tests:
 
 ```bash
