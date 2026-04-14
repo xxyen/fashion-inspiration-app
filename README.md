@@ -13,7 +13,7 @@ The project is built as a local proof of concept with:
 
 ## Demo
 
-[Watch the demo video](docs/demo/demo.mp4)
+![Demo workflow](docs/demo/demo.gif)
 
 | Image Library |
 | --- |
