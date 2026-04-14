@@ -23,6 +23,17 @@ The project is built as a local proof of concept with:
 | --- | --- | --- |
 | <img src="docs/screenshots/image-uploading.png" alt="Image upload with AI classification progress" width="260"> | <img src="docs/screenshots/filters-search.png" alt="Search and filter results" width="260"> | <img src="docs/screenshots/image-detail-notes.png" alt="Image details with AI metadata and designer notes" width="260"> |
 
+## Live Deployment
+
+The project is deployed on Render and can be tested online.
+
+| Service | URL | Notes |
+| --- | --- | --- |
+| Frontend | [fashion-inspiration-app-frontend.onrender.com](https://fashion-inspiration-app-frontend.onrender.com) | React + Vite static site. |
+| Backend API | [fashion-inspiration-app.onrender.com](https://fashion-inspiration-app.onrender.com/api/health) | FastAPI service with OpenAI classification, SQLite, and local upload storage on Render. |
+
+The deployed frontend uses `VITE_API_BASE_URL` to call the Render backend. The backend uses environment variables for `OPENAI_API_KEY`, `OPENAI_MODEL`, `DATABASE_PATH`, `UPLOAD_DIR`, and `CORS_ORIGINS`.
+
 ## Features
 
 | Feature | Status | Notes |
