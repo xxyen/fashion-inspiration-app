@@ -11,6 +11,18 @@ The project is built as a local proof of concept with:
 - Database: SQLite with FTS5 search
 - Model: OpenAI multimodal model, configurable through `OPENAI_MODEL`
 
+## Demo
+
+[Watch the demo video](docs/demo/demo.mp4)
+
+| Image Library |
+| --- |
+| <img src="docs/screenshots/library.png" alt="Image library with compact filters" width="720"> |
+
+| Upload and AI Classification | Search and Filters | Image Details and Designer Notes |
+| --- | --- | --- |
+| <img src="docs/screenshots/image-uploading.png" alt="Image upload with AI classification progress" width="260"> | <img src="docs/screenshots/filters-search.png" alt="Search and filter results" width="260"> | <img src="docs/screenshots/image-detail-notes.png" alt="Image details with AI metadata and designer notes" width="260"> |
+
 ## Features
 
 | Feature | Status | Notes |
@@ -43,6 +55,7 @@ app/backend/app/        Backend package, schema, classifier, and API routes
 app/backend/uploads/    Local upload storage
 app/frontend/           React + Tailwind app
 app/frontend/e2e/       Playwright end-to-end tests
+docs/                   Demo video and screenshots
 eval/                   Evaluation scripts, labels, images, and results
 tests/backend/          Backend unit and integration tests
 README.md               Setup, architecture notes, and evaluation summary
