@@ -70,6 +70,62 @@ Backend tests:
 ./backend/.venv/bin/pytest
 ```
 
+## Evaluation
+
+Use 50-80 Pexels fashion or street-fashion images under `eval/images`, with manual labels in `eval/labels.json`. Start from `eval/labels.example.json`.
+
+Prepare downloaded images with consistent names:
+
+```bash
+./backend/.venv/bin/python eval/prepare_images.py /path/to/raw/pexels-downloads --max-size 1024 --quality 85
+```
+
+This resizes each image to a maximum side length of 1024px, converts it to optimized JPEG, saves it under `eval/images` as `001.jpg`, `002.jpg`, and so on, and writes `eval/image_manifest.json`. Fill in `source_url` and `photographer` in that manifest where available.
+
+Generate AI-assisted draft labels:
+
+```bash
+./backend/.venv/bin/python eval/draft_labels.py --images eval/images --manifest eval/image_manifest.json
+```
+
+This writes `eval/labels.draft.json`. Review and correct the draft labels manually, then save the final version as `eval/labels.json`. The draft is only a labeling aid; `eval/labels.json` should represent manually reviewed expected attributes.
+
+Run:
+
+```bash
+./backend/.venv/bin/python eval/run_eval.py --labels eval/labels.json --images eval/images
+```
+
+The script writes `eval/results.json` and prints per-attribute accuracy. Empty expected values are skipped for that field, so visually ambiguous material or consumer labels do not unfairly count as errors.
+
+Primary accuracy fields:
+
+```text
+garment_type
+color_palette
+pattern
+season
+occasion
+location_scene
+```
+
+Secondary, more subjective fields:
+
+```text
+style
+material
+consumer_profile
+```
+
+Qualitative review only:
+
+```text
+description
+trend_notes
+```
+
+Exact city and country are treated as user-provided context, not visually reliable model targets for Pexels images.
+
 ## Environment Variables
 
 Copy `.env.example` to `.env` and fill in `OPENAI_API_KEY` when the real multimodal classifier is connected.
@@ -86,5 +142,5 @@ If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placehol
 
 ## Next Steps
 
-1. Add evaluation scripts and a labeled Pexels test set.
+1. Add the labeled Pexels test set.
 2. Add end-to-end tests.

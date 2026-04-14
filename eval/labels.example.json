@@ -1,0 +1,22 @@
+[
+  {
+    "image": "001.jpg",
+    "source": "pexels",
+    "source_url": "https://www.pexels.com/photo/example/",
+    "photographer": "Photographer Name",
+    "expected": {
+      "garment_type": ["jacket"],
+      "style": ["streetwear", "casual"],
+      "material": ["denim"],
+      "color_palette": ["blue", "black"],
+      "pattern": ["solid"],
+      "season": "fall",
+      "occasion": ["casual", "daywear"],
+      "consumer_profile": ["young adult"],
+      "location_context": {
+        "scene": "urban street"
+      }
+    }
+  }
+]
+
