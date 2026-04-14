@@ -191,13 +191,16 @@ The E2E test starts its own backend and frontend servers on `127.0.0.1:8010` and
 
 ## AI Integration
 
-The frontend does not call the AI model directly. Images are uploaded to FastAPI, and the backend classifier calls the OpenAI multimodal model with the image and a structured prompt.
-
-The prompt asks for strict JSON with a fixed fashion schema: description, garment type, style, material, color, pattern, season, occasion, consumer profile, trend notes, and scene context. The model is also told not to guess exact city, country, or continent from the image alone.
-
-After the model responds, the backend parses the JSON, handles simple formatting issues, validates the result with Pydantic, and normalizes fields before saving to SQLite. If `OPENAI_API_KEY` is not set, the app uses fallback classification so local development and E2E tests can still run.
-
-The AI metadata is used in three places: gallery tags and image details, dynamic filters, and SQLite FTS5 search. The model can be changed by setting `OPENAI_MODEL`, so the classifier can be swapped without changing the frontend workflow.
+| Step | What happens | Why |
+| --- | --- | --- |
+| Upload | The React frontend uploads the image to FastAPI. | Keeps the API key out of the browser. |
+| Model call | The backend classifier sends the image and prompt to the OpenAI multimodal model. | Centralizes AI logic in one backend adapter. |
+| Prompt format | The prompt asks for strict JSON with description, garment type, style, material, color, pattern, season, occasion, consumer profile, trend notes, and scene context. | Makes model output usable for filters, search, and evaluation. |
+| Location rule | The model is told not to guess exact city, country, or continent from the image alone. | Avoids unreliable location claims. |
+| Validation | The backend parses JSON, handles simple formatting issues, validates with Pydantic, and normalizes fields. | Reduces risk from unstable model output. |
+| Fallback | If `OPENAI_API_KEY` is not set, the app uses fallback classification. | Keeps local development and E2E tests deterministic. |
+| Storage and use | AI metadata is saved in SQLite and used for gallery tags, image details, dynamic filters, and FTS5 search. | Turns model output into product features. |
+| Model swap | The model can be changed with `OPENAI_MODEL`. | Supports future model comparison without changing the frontend workflow. |
 
 Images in the evaluation set are preprocessed with `eval/prepare_images.py`: renamed, resized to a maximum side length, converted to JPEG, and corrected for EXIF orientation. This keeps evaluation inputs consistent without removing useful visual detail.
 
