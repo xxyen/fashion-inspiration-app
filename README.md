@@ -197,19 +197,44 @@ Current results:
 | Field | Accuracy | Notes |
 | --- | ---: | --- |
 | garment_type | 0.971 | Strong on visible garment categories. |
-| occasion | 1.000 | Strong on broad use cases such as casual, formal, and workwear. |
+| occasion | 0.986 | Strong on broad use cases such as casual, formal, and workwear. |
 | consumer_profile | 1.000 | Useful, but still subjective. |
-| style | 0.957 | Good when labels allow multiple valid styles. |
-| color_palette | 0.929 | Strong on dominant visible colors. |
-| pattern | 0.897 | Good for obvious solid, striped, embroidered, and graphic patterns. |
-| season | 0.794 | Scored with normalization such as autumn to fall. |
-| material | 0.907 | Skips cases where material is visually unclear. |
-| location_scene | 0.743 | Harder because scene labels are open-ended. |
+| style | 0.943 | Good when labels allow multiple valid styles. |
+| color_palette | 0.943 | Strong on dominant visible colors. |
+| pattern | 0.912 | Good for obvious solid, striped, embroidered, and graphic patterns. |
+| season | 0.779 | Scored with normalization such as autumn to fall. |
+| material | 0.884 | Skips cases where material is visually unclear. |
+| location_scene | 0.757 | Harder because scene labels are open-ended. |
+
+Multi-label fields also report precision, recall, and F1. Accuracy here uses lenient overlap matching, while F1 is stricter because it penalizes missing labels and noisy extra labels.
+
+| Field | Precision | Recall | F1 |
+| --- | ---: | ---: | ---: |
+| garment_type | 0.561 | 0.786 | 0.654 |
+| style | 0.774 | 0.873 | 0.820 |
+| material | 0.788 | 0.870 | 0.827 |
+| color_palette | 0.671 | 0.886 | 0.764 |
+| pattern | 0.713 | 0.857 | 0.778 |
+| occasion | 0.860 | 0.925 | 0.892 |
+| consumer_profile | 0.973 | 0.910 | 0.940 |
+
+How labels are evaluated:
+
+| Label type | Fields | Evaluation rule |
+| --- | --- | --- |
+| Multi-label attributes | `garment_type`, `style`, `material`, `color_palette`, `pattern`, `occasion`, `consumer_profile` | Accuracy counts a field as correct when prediction and ground truth share at least one normalized label. Precision, recall, and F1 also check whether the model returned too many or too few labels. |
+| Single-label attribute | `season` | Compared after light normalization, such as `autumn` to `fall`. |
+| Scene label | `location_scene` | Compared after simple scene normalization, such as `urban street` or `sidewalk` to `street`. |
+| User-provided location | `city`, `country`, `continent` | Not evaluated as visual model targets because exact location is usually not reliable from the image alone. |
+| Open-ended text | `description`, `trend_notes` | Reviewed qualitatively, not exact-matched, because many useful answers can be worded differently. |
+
+If the ground truth for a field is empty, that field is skipped for that image.
 
 Field notes:
 
 - `occasion` scores well because the labels are broad, such as casual, formal, work, or vacation.
 - `consumer_profile` also scores well, but it is subjective. I treat it as a merchandising hint, not a hard truth.
+- `garment_type` has high overlap accuracy but lower precision because the model often returns extra visible items such as shoes or bags.
 - `season` is lower because many images do not have strong visual season evidence. The prompt is intentionally conservative, so the model should avoid guessing when the image is unclear.
 - `location_scene` improved after using shorter scene labels, but it is still harder than garment or color because scenes can be ambiguous.
 
@@ -219,6 +244,7 @@ Evaluation trade-offs:
 | --- | --- |
 | Objective fields | Garment type, color, pattern, season, occasion, and scene are scored. |
 | Subjective fields | Style, material, and consumer profile are scored but interpreted carefully. |
+| Multi-label fields | Overlap accuracy is easy to read, while precision/recall/F1 gives a stricter view. |
 | Qualitative fields | Description and trend notes are reviewed manually, not exact-matched. |
 | Location | Exact city and country are treated as user-provided context, not model targets. |
 | Normalization | Season and scene aliases reduce false misses from small wording differences. |

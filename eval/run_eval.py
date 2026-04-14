@@ -98,6 +98,30 @@ def matches(predicted, expected) -> bool:
     return bool(predicted_values and expected_values and predicted_values.intersection(expected_values))
 
 
+def multilabel_counts(predicted, expected) -> dict[str, int]:
+    predicted_values = normalize(predicted)
+    expected_values = normalize(expected)
+    return {
+        "tp": len(predicted_values.intersection(expected_values)),
+        "fp": len(predicted_values - expected_values),
+        "fn": len(expected_values - predicted_values),
+    }
+
+
+def precision_recall_f1(counts: dict[str, int]) -> dict[str, float]:
+    tp = counts["tp"]
+    fp = counts["fp"]
+    fn = counts["fn"]
+    precision = tp / (tp + fp) if tp + fp else 0
+    recall = tp / (tp + fn) if tp + fn else 0
+    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0
+    return {
+        "precision": round(precision, 3),
+        "recall": round(recall, 3),
+        "f1": round(f1, 3),
+    }
+
+
 def canonical_matches(predicted, expected, aliases: dict[str, set[str]]) -> bool:
     predicted_values = canonicalize(predicted, aliases)
     expected_values = canonicalize(expected, aliases)
@@ -114,6 +138,10 @@ async def evaluate(labels_path: Path, images_dir: Path) -> dict:
     labels = json.loads(labels_path.read_text())
     totals: dict[str, int] = {}
     correct: dict[str, int] = {}
+    multilabel_totals = {
+        field: {"tp": 0, "fp": 0, "fn": 0}
+        for field in LIST_FIELDS
+    }
     details = []
 
     async def evaluate_field(name: str, predicted, expected, row: dict, aliases: dict[str, set[str]] | None = None) -> None:
@@ -147,6 +175,11 @@ async def evaluate(labels_path: Path, images_dir: Path) -> dict:
 
         for field in LIST_FIELDS:
             await evaluate_field(field, predicted.get(field), expected.get(field), row)
+            if normalize(expected.get(field)):
+                counts = multilabel_counts(predicted.get(field), expected.get(field))
+                row["matches"][f"{field}_counts"] = counts
+                for key, value in counts.items():
+                    multilabel_totals[field][key] += value
 
         for field in SCALAR_FIELDS:
             await evaluate_field(field, predicted.get(field), expected.get(field), row, SEASON_ALIASES)
@@ -165,7 +198,15 @@ async def evaluate(labels_path: Path, images_dir: Path) -> dict:
         for field, total in totals.items()
         if total
     }
-    return {"summary": summary, "details": details}
+    multilabel_summary = {
+        field: precision_recall_f1(counts)
+        for field, counts in multilabel_totals.items()
+    }
+    return {
+        "summary": summary,
+        "multilabel_summary": multilabel_summary,
+        "details": details,
+    }
 
 
 async def main() -> None:
@@ -179,6 +220,7 @@ async def main() -> None:
     output_path = Path(args.output)
     output_path.write_text(json.dumps(results, indent=2))
     print(json.dumps(results["summary"], indent=2))
+    print(json.dumps(results["multilabel_summary"], indent=2))
 
 
 if __name__ == "__main__":

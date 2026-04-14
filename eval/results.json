@@ -1,19 +1,56 @@
 {
   "summary": {
     "garment_type": 0.971,
-    "style": 0.957,
-    "color_palette": 0.929,
-    "pattern": 0.897,
-    "occasion": 1.0,
+    "style": 0.943,
+    "color_palette": 0.943,
+    "pattern": 0.912,
+    "occasion": 0.986,
     "consumer_profile": 1.0,
-    "season": 0.794,
-    "location_scene": 0.743,
-    "material": 0.907
+    "season": 0.779,
+    "location_scene": 0.757,
+    "material": 0.884
+  },
+  "multilabel_summary": {
+    "garment_type": {
+      "precision": 0.561,
+      "recall": 0.786,
+      "f1": 0.654
+    },
+    "style": {
+      "precision": 0.774,
+      "recall": 0.873,
+      "f1": 0.82
+    },
+    "material": {
+      "precision": 0.788,
+      "recall": 0.87,
+      "f1": 0.827
+    },
+    "color_palette": {
+      "precision": 0.671,
+      "recall": 0.886,
+      "f1": 0.764
+    },
+    "pattern": {
+      "precision": 0.713,
+      "recall": 0.857,
+      "f1": 0.778
+    },
+    "occasion": {
+      "precision": 0.86,
+      "recall": 0.925,
+      "f1": 0.892
+    },
+    "consumer_profile": {
+      "precision": 0.973,
+      "recall": 0.91,
+      "f1": 0.94
+    }
   },
   "details": [
     {
       "image": "001.jpg",
-      "description": "A woman wearing a long, flowing purple dress with intricate gold and green embroidery along the front, sleeves, and hem. The dress features a V-neckline and long sleeves, creating an elegant and regal appearance. The fabric appears lightweight and drapes softly, with a slit revealing part of the leg. The outfit is styled in a relaxed manner as the woman sits on stone steps in an outdoor setting.",
+      "description": "A woman wearing a long, flowing purple dress with intricate gold and green embroidery along the front, sleeves, and hem. The dress features long sleeves, a V-neckline, and a slit that reveals part of the leg. The fabric appears lightweight and elegant, suitable for a formal or semi-formal occasion.",
       "expected": {
         "garment_type": [
           "dress"
@@ -52,7 +89,7 @@
         ],
         "style": [
           "bohemian",
-          "elegant"
+          "formal"
         ],
         "material": [],
         "color_palette": [
@@ -64,16 +101,15 @@
           "embroidered"
         ],
         "occasion": [
-          "casual",
-          "formal"
+          "formal",
+          "evening"
         ],
         "consumer_profile": [
-          "young adult",
-          "adult"
+          "young adult"
         ],
-        "season": "spring",
+        "season": "fall",
         "season_normalized": [
-          "spring"
+          "fall"
         ],
         "location_scene": "outdoor stairs",
         "location_scene_normalized": [
@@ -82,19 +118,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "consumer_profile": true,
-        "season": false,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
+        "season": true,
         "location_scene": true
       }
     },
     {
       "image": "002.jpg",
-      "description": "A young woman wearing a bright yellow oversized t-shirt dress paired with a black oversized graphic hoodie. She has on black distressed patterned tights and chunky white sneakers. The look is casual and edgy, combining streetwear elements with bold graphic prints and statement hosiery.",
+      "description": "A young woman wearing a bright yellow oversized t-shirt dress paired with a black oversized graphic hoodie. She has on black distressed patterned tights and chunky white sneakers. The look is casual streetwear with an edgy, urban vibe.",
       "expected": {
         "garment_type": [
           "dress",
@@ -173,12 +239,47 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
@@ -221,8 +322,8 @@
       },
       "predicted": {
         "garment_type": [
-          "blazer",
           "skirt",
+          "blazer",
           "top",
           "sneakers"
         ],
@@ -256,19 +357,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "004.jpg",
-      "description": "A woman wearing an elegant off-the-shoulder evening gown with a deep neckline and a high slit, covered in dark green sequins that shimmer in the light. The dress has a fitted silhouette that accentuates the figure, paired with black pointed-toe heels.",
+      "description": "A glamorous off-shoulder evening gown with a deep neckline and a high slit, covered in dark green sequins that create a sparkling effect. The dress has a fitted silhouette that accentuates the figure, paired with black pointed-toe heels.",
       "expected": {
         "garment_type": [
           "dress"
@@ -330,8 +461,10 @@
         "consumer_profile": [
           "adult"
         ],
-        "season": null,
-        "season_normalized": [],
+        "season": "fall",
+        "season_normalized": [
+          "fall"
+        ],
         "location_scene": "outdoor stairs",
         "location_scene_normalized": [
           "outdoor"
@@ -339,19 +472,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
-        "season": false,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
+        "season": true,
         "location_scene": false
       }
     },
     {
       "image": "005.jpg",
-      "description": "A young woman wearing a casual outfit consisting of a light beige button-up shirt tied at the waist over a bright blue top, paired with high-waisted blue denim jeans. She accessorizes with large black sunglasses and a teal wristwatch, standing in an urban street setting during sunset.",
+      "description": "A young woman wearing a casual outfit consisting of a light beige button-up shirt tied at the waist over a bright blue top, paired with high-waisted blue jeans. She accessorizes with large black sunglasses and a teal wristwatch, creating a relaxed yet stylish streetwear look.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -400,14 +568,14 @@
           "streetwear"
         ],
         "material": [
-          "denim",
-          "cotton"
+          "cotton",
+          "denim"
         ],
         "color_palette": [
           "beige",
           "blue",
-          "black",
-          "teal"
+          "teal",
+          "black"
         ],
         "pattern": [
           "solid"
@@ -429,12 +597,47 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
@@ -483,15 +686,16 @@
           "pants"
         ],
         "style": [
-          "casual"
+          "casual",
+          "streetwear"
         ],
         "material": [],
         "color_palette": [
           "white",
           "black",
-          "green",
           "red",
-          "yellow"
+          "yellow",
+          "green"
         ],
         "pattern": [
           "solid",
@@ -514,12 +718,42 @@
       },
       "matches": {
         "garment_type": true,
-        "style": false,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
@@ -600,19 +834,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "008.jpg",
-      "description": "A young woman wearing a brown oversized bomber jacket over a cropped beige turtleneck sweater, paired with high-waisted brown pants featuring a subtle star pattern. She accessorizes with large round glasses and carries a maroon shoulder bag, standing in a street setting.",
+      "description": "A young woman wearing a brown oversized bomber jacket over a cropped beige turtleneck sweater, paired with high-waisted brown pants featuring a subtle pattern. She accessorizes with large round glasses and a maroon shoulder bag, holding a smartphone in her hands.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -669,12 +938,12 @@
         "color_palette": [
           "brown",
           "beige",
-          "green",
-          "maroon"
+          "maroon",
+          "green"
         ],
         "pattern": [
           "solid",
-          "star"
+          "faded"
         ],
         "occasion": [
           "casual"
@@ -693,19 +962,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "009.jpg",
-      "description": "A young adult wearing an oversized light blue denim jacket paired with matching denim jeans and a white t-shirt underneath. The outfit is accessorized with black sunglasses and white sneakers with orange accents, creating a casual streetwear look.",
+      "description": "A young man wearing an oversized light blue denim jacket paired with matching denim jeans and a white t-shirt underneath. He accessorizes with black sunglasses and white sneakers with orange accents, creating a casual streetwear look.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -744,7 +1048,7 @@
       "predicted": {
         "garment_type": [
           "jacket",
-          "pants",
+          "jeans",
           "t-shirt",
           "sneakers"
         ],
@@ -753,14 +1057,13 @@
         ],
         "material": [
           "denim",
-          "cotton",
-          "leather"
+          "cotton"
         ],
         "color_palette": [
           "blue",
           "white",
-          "black",
-          "orange"
+          "orange",
+          "black"
         ],
         "pattern": [
           "solid"
@@ -782,19 +1085,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "010.jpg",
-      "description": "A casual streetwear outfit featuring a loose-fitting, long-sleeve graphic sweatshirt paired with beige cargo pants and black sneakers with orange and white accents. The look is relaxed and comfortable, suitable for everyday wear.",
+      "description": "A casual streetwear outfit featuring a dark oversized long-sleeve graphic top paired with light tan cargo pants and black sneakers with orange and white accents.",
       "expected": {
         "garment_type": [
           "sweatshirt",
@@ -830,18 +1168,17 @@
       },
       "predicted": {
         "garment_type": [
-          "sweatshirt",
+          "top",
           "pants",
           "sneakers"
         ],
         "style": [
-          "streetwear",
-          "casual"
+          "streetwear"
         ],
         "material": [],
         "color_palette": [
           "black",
-          "beige",
+          "tan",
           "orange",
           "white"
         ],
@@ -866,19 +1203,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "material": "skipped",
-        "color_palette": false,
+        "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 3,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "011.jpg",
-      "description": "The outfit features a cozy camel-colored cardigan with a relaxed fit, layered over a white top. The look is completed with high-waisted, cropped dark brown pants, white socks, and black loafers. Accessories include a green shoulder bag, a white tote, layered pearl necklaces, and round glasses, creating a stylish and casual streetwear vibe.",
+      "description": "The outfit features a cozy camel-colored cardigan with a relaxed fit, paired with dark brown cropped pants. The look is accessorized with a green shoulder bag, white socks, and black loafers. The wearer also sports layered necklaces and round glasses, adding a touch of personality and sophistication to the casual streetwear ensemble.",
       "expected": {
         "garment_type": [
           "cardigan",
@@ -917,10 +1284,7 @@
       "predicted": {
         "garment_type": [
           "cardigan",
-          "top",
-          "pants",
-          "shoes",
-          "bag"
+          "pants"
         ],
         "style": [
           "streetwear",
@@ -929,10 +1293,10 @@
         "material": [],
         "color_palette": [
           "camel",
+          "brown",
+          "green",
           "white",
-          "dark brown",
-          "black",
-          "green"
+          "black"
         ],
         "pattern": [
           "solid"
@@ -954,19 +1318,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "012.jpg",
-      "description": "A man wearing a grey long coat over a light blue button-up shirt paired with slim black pants and black ankle boots. He accessorizes with round sunglasses and a wristwatch, presenting a polished yet casual look suitable for cooler weather.",
+      "description": "A man wearing a light blue button-up shirt under a long grey textured coat, paired with slim black pants and black leather ankle boots with buckles. He accessorizes with round black sunglasses and a black wristwatch, presenting a polished and modern look suitable for cooler weather.",
       "expected": {
         "garment_type": [
           "overcoat",
@@ -1021,7 +1415,7 @@
         ],
         "color_palette": [
           "grey",
-          "light blue",
+          "blue",
           "black"
         ],
         "pattern": [
@@ -1032,7 +1426,8 @@
           "semi-formal"
         ],
         "consumer_profile": [
-          "young adult"
+          "young adult",
+          "adult"
         ],
         "season": "fall",
         "season_normalized": [
@@ -1045,19 +1440,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 1
+        },
         "style": false,
+        "style_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "013.jpg",
-      "description": "A male model walking the runway wearing a sleek, tailored black suit with a subtle textured pattern. The suit jacket features a wrap-style front with a shawl collar, paired with slim-fit black trousers. Underneath, a crisp white button-up shirt adds contrast. The look is completed with black dress shoes, creating a sophisticated and modern formal outfit.",
+      "description": "A male model wearing a sleek, tailored black suit with a subtle textured pattern. The suit jacket features a wrap-style front with a shawl collar, paired with slim-fit trousers. Underneath, a white button-up shirt adds contrast. The look is completed with black dress shoes, creating a sophisticated and modern formal outfit.",
       "expected": {
         "garment_type": [
           "suit",
@@ -1094,16 +1524,18 @@
       },
       "predicted": {
         "garment_type": [
-          "jacket",
-          "pants",
+          "suit",
           "shirt",
           "shoes"
         ],
         "style": [
           "formal",
-          "runway"
+          "modern"
         ],
-        "material": [],
+        "material": [
+          "satin",
+          "cotton"
+        ],
         "color_palette": [
           "black",
           "white"
@@ -1128,19 +1560,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 2
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": false,
+        "pattern_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
     },
     {
       "image": "014.jpg",
-      "description": "A bold and vibrant outfit featuring a bright lime green suit with a floral inner lining, paired with a vivid red shirt and matching red wide-brimmed hat. The look is completed with white sneakers and round sunglasses, creating a striking and confident street style ensemble.",
+      "description": "A bold and vibrant outfit featuring a bright green suit with a floral inner lining, paired with a red shirt and a matching red wide-brimmed hat. The look is completed with white sneakers and round sunglasses, creating a striking and confident street style statement.",
       "expected": {
         "garment_type": [
           "suit",
@@ -1186,16 +1648,17 @@
         ],
         "material": [],
         "color_palette": [
-          "lime green",
+          "green",
           "red",
           "white"
         ],
         "pattern": [
-          "floral (lining)"
+          "floral",
+          "solid"
         ],
         "occasion": [
           "casual",
-          "fashion statement"
+          "fashion event"
         ],
         "consumer_profile": [
           "young adult",
@@ -1212,19 +1675,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
-        "pattern": false,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
+        "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
     },
     {
       "image": "015.jpg",
-      "description": "A person wearing a monochromatic outfit consisting of a mustard yellow short-sleeve jacket and matching wide-leg pants, paired with a white t-shirt, white sneakers, and a white cap. The look is casual and relaxed, suitable for streetwear.",
+      "description": "A person wearing a monochromatic mustard yellow outfit consisting of a cropped jacket with three-quarter sleeves and wide-leg pants, paired with a white t-shirt, white sneakers, and a white cap. The look is casual and modern with a relaxed fit.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -1266,8 +1759,7 @@
           "sneakers"
         ],
         "style": [
-          "streetwear",
-          "casual"
+          "streetwear"
         ],
         "material": [],
         "color_palette": [
@@ -1283,9 +1775,9 @@
         "consumer_profile": [
           "young adult"
         ],
-        "season": "fall",
+        "season": "spring",
         "season_normalized": [
-          "fall"
+          "spring"
         ],
         "location_scene": "street",
         "location_scene_normalized": [
@@ -1294,19 +1786,49 @@
       },
       "matches": {
         "garment_type": false,
+        "garment_type_counts": {
+          "tp": 0,
+          "fp": 5,
+          "fn": 2
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
-        "season": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "season": false,
         "location_scene": true
       }
     },
     {
       "image": "016.jpg",
-      "description": "The outfit features a black leather jacket layered over a striped knit sweater in warm tones. The look is completed with burnt orange cargo pants, a matching orange beanie, and a bright orange crossbody bag, creating a coordinated and vibrant streetwear ensemble.",
+      "description": "A young adult wearing a black leather jacket over a striped knit sweater in neutral tones, paired with burnt orange cargo pants. The outfit is accessorized with a bright orange beanie and a matching orange crossbody bag, creating a coordinated and vibrant streetwear look.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -1386,19 +1908,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "017.jpg",
-      "description": "A young woman wearing a black leather biker jacket with silver zipper details, paired with a black skirt. She carries a black handbag and stands by a waterfront railing during sunset, giving off a cool, edgy streetwear vibe.",
+      "description": "A young woman wearing a black leather biker jacket with silver zipper details, paired with a black skirt. The outfit has a sleek, edgy vibe suitable for casual streetwear during cooler seasons.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -1434,8 +1991,7 @@
       "predicted": {
         "garment_type": [
           "jacket",
-          "skirt",
-          "bag"
+          "skirt"
         ],
         "style": [
           "streetwear",
@@ -1467,19 +2023,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "018.jpg",
-      "description": "A young man wearing a black leather biker jacket over a black turtleneck, paired with light blue distressed skinny jeans and white sneakers. He accessorizes with a silver chain necklace, black sunglasses, and a black crossbody bag, creating a modern streetwear look.",
+      "description": "A young man wearing a black leather biker jacket over a black turtleneck, paired with light blue distressed skinny jeans and white sneakers. He accessorizes with a silver chain necklace, black sunglasses, and a small black crossbody bag.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -1558,12 +2149,47 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 4,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
@@ -1633,8 +2259,10 @@
         "consumer_profile": [
           "young adult"
         ],
-        "season": null,
-        "season_normalized": [],
+        "season": "spring",
+        "season_normalized": [
+          "spring"
+        ],
         "location_scene": "outdoor",
         "location_scene_normalized": [
           "outdoor"
@@ -1642,12 +2270,47 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
@@ -1699,8 +2362,7 @@
           "sneakers"
         ],
         "style": [
-          "streetwear",
-          "casual"
+          "streetwear"
         ],
         "material": [
           "denim",
@@ -1731,19 +2393,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "021.jpg",
-      "description": "The outfit features a cozy oversized beige teddy jacket layered over a fitted black crop top, paired with a short denim mini skirt. The look is completed with bold patterned black tights and a white belt with text detailing, accessorized with sunglasses.",
+      "description": "A young woman wearing a beige teddy coat over a black cropped tank top, paired with a short denim skirt and patterned black tights. She accessorizes with a white belt and sunglasses, creating a casual yet edgy streetwear look.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -1783,14 +2480,14 @@
       },
       "predicted": {
         "garment_type": [
-          "jacket",
+          "coat",
           "top",
           "skirt",
-          "tights",
-          "belt"
+          "tights"
         ],
         "style": [
-          "streetwear"
+          "streetwear",
+          "casual"
         ],
         "material": [
           "faux fur",
@@ -1805,7 +2502,7 @@
         ],
         "pattern": [
           "solid",
-          "graphic"
+          "geometric"
         ],
         "occasion": [
           "casual"
@@ -1824,19 +2521,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "022.jpg",
-      "description": "A man walking on a city street wearing a casual outfit consisting of a plain white short-sleeve t-shirt, greenish-gray straight-leg pants, and chunky sneakers. He accessorizes with sunglasses, a necklace, a wristwatch, and a blue earring, creating a relaxed and modern streetwear look.",
+      "description": "A man walking on a city street wearing a casual outfit consisting of a plain white short-sleeve t-shirt, greenish-gray straight-leg pants, and chunky sneakers. He accessorizes with sunglasses, a necklace, a wristwatch, and a blue earring, presenting a relaxed and modern streetwear look.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -1906,12 +2638,42 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 2
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
@@ -1994,19 +2756,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "024.jpg",
-      "description": "A man wearing a brown leather jacket over a black shirt and black pants, sitting on a black motorcycle. The outfit has a rugged, casual vibe suitable for streetwear.",
+      "description": "A man wearing a brown leather jacket over a black shirt and black pants, sitting on a black motorcycle. The outfit has a rugged, casual vibe suitable for streetwear, with a focus on classic biker style.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -2050,8 +2847,8 @@
           "pants"
         ],
         "style": [
-          "casual",
-          "streetwear"
+          "streetwear",
+          "biker"
         ],
         "material": [
           "leather",
@@ -2081,19 +2878,54 @@
       },
       "matches": {
         "garment_type": true,
-        "style": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
+        "style": false,
+        "style_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "025.jpg",
-      "description": "A long, elegant evening gown with a high neckline and long sheer sleeves. The dress features intricate beadwork and embellishments in a pattern that accentuates the waist and flows vertically down the length of the gown. The fabric is sheer and light, with a nude or blush base color, creating a sophisticated and glamorous look.",
+      "description": "A long, elegant evening gown with a sheer overlay adorned with intricate beadwork and sequins in a flowing pattern. The dress features a high neckline and long sleeves, with a fitted bodice that accentuates the waist and a floor-length skirt that creates a graceful silhouette. The color palette is soft and neutral with subtle metallic accents, giving the dress a sophisticated and glamorous look.",
       "expected": {
         "garment_type": [
           "evening"
@@ -2143,12 +2975,12 @@
         ],
         "color_palette": [
           "nude",
-          "blush",
           "gold",
           "silver"
         ],
         "pattern": [
-          "embellished"
+          "beaded",
+          "striped"
         ],
         "occasion": [
           "formal",
@@ -2168,19 +3000,54 @@
       },
       "matches": {
         "garment_type": false,
+        "garment_type_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "material": false,
+        "material_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "color_palette": true,
-        "pattern": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
+        "pattern": false,
+        "pattern_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 2
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "026.jpg",
-      "description": "A man wearing a black leather biker jacket over a black shirt, paired with faded gray jeans. He accessorizes with a silver necklace and bracelet, and wears black-framed glasses. The look is edgy and casual, suitable for streetwear fashion.",
+      "description": "A man wearing a black leather biker jacket over a black shirt, paired with faded gray jeans. He accessorizes with a silver necklace and bracelet, and wears black-framed glasses. The look is completed with a casual, slightly rugged vibe, enhanced by the setting and the baseball bat wrapped in barbed wire he is holding.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -2224,8 +3091,8 @@
           "pants"
         ],
         "style": [
-          "streetwear",
-          "edgy"
+          "casual",
+          "streetwear"
         ],
         "material": [
           "leather",
@@ -2255,19 +3122,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "027.jpg",
-      "description": "A man wearing a casual outfit consisting of a beige and white varsity jacket, white cargo pants, and beige and black sneakers. He accessorizes with dark sunglasses and stands confidently by the waterfront under a clear blue sky.",
+      "description": "A man wearing a casual outfit consisting of a beige and white varsity jacket, white cargo pants, and beige and black sneakers. He accessorizes with dark sunglasses and stands confidently by the water under a clear blue sky.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -2318,7 +3220,7 @@
         ],
         "material": [
           "cotton",
-          "canvas"
+          "denim"
         ],
         "color_palette": [
           "beige",
@@ -2338,19 +3240,54 @@
         "season_normalized": [
           "spring"
         ],
-        "location_scene": "waterfront",
+        "location_scene": "outdoor waterfront",
         "location_scene_normalized": [
-          "waterfront"
+          "outdoor waterfront"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
@@ -2423,19 +3360,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": false,
+        "color_palette_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": false,
+        "pattern_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "029.jpg",
-      "description": "A young woman wearing a vibrant fuchsia satin strapless evening gown with a fitted bodice and a long, flowing skirt featuring a subtle slit. She pairs the dress with delicate strappy heels, creating an elegant and sophisticated look suitable for formal occasions.",
+      "description": "A young woman wearing a strapless, floor-length satin gown in a vibrant fuchsia color. The dress features a fitted bodice with subtle boning details and a slight slit on one side, paired with delicate strappy heels.",
       "expected": {
         "garment_type": [
           "dress"
@@ -2472,15 +3444,14 @@
           "dress"
         ],
         "style": [
-          "evening",
-          "formal"
+          "formal",
+          "evening"
         ],
         "material": [
           "satin"
         ],
         "color_palette": [
-          "fuchsia",
-          "pink"
+          "fuchsia"
         ],
         "pattern": [
           "solid"
@@ -2500,19 +3471,167 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
-        "color_palette": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "color_palette": false,
+        "color_palette_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "season": "skipped",
         "location_scene": true
       }
     },
     {
       "image": "030.jpg",
-      "description": "A man walking on a city sidewalk wearing a casual outfit consisting of a short-sleeve white button-up shirt, light gray cargo pants, white sneakers, and sunglasses. He carries a black crossbody bag.",
+      "description": "A man walking on a street wearing a casual short-sleeve white button-up shirt paired with light gray cargo pants and white sneakers. He accessorizes with dark sunglasses and a black crossbody bag, creating a relaxed and practical streetwear look.",
+      "expected": {
+        "garment_type": [
+          "shirt",
+          "pants"
+        ],
+        "style": [
+          "streetwear",
+          "casual"
+        ],
+        "material": [],
+        "color_palette": [
+          "white",
+          "gray",
+          "black"
+        ],
+        "pattern": [
+          "solid"
+        ],
+        "occasion": [
+          "casual"
+        ],
+        "consumer_profile": [
+          "young adult"
+        ],
+        "season": "spring",
+        "season_normalized": [
+          "spring"
+        ],
+        "location_scene": "street",
+        "location_scene_normalized": [
+          "street"
+        ]
+      },
+      "predicted": {
+        "garment_type": [
+          "shirt",
+          "pants",
+          "sneakers",
+          "bag"
+        ],
+        "style": [
+          "streetwear",
+          "casual"
+        ],
+        "material": [],
+        "color_palette": [
+          "white",
+          "gray",
+          "black"
+        ],
+        "pattern": [
+          "solid"
+        ],
+        "occasion": [
+          "casual"
+        ],
+        "consumer_profile": [
+          "young adult"
+        ],
+        "season": "spring",
+        "season_normalized": [
+          "spring"
+        ],
+        "location_scene": "street",
+        "location_scene_normalized": [
+          "street"
+        ]
+      },
+      "matches": {
+        "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
+        "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "material": "skipped",
+        "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
+        "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "season": true,
+        "location_scene": true
+      }
+    },
+    {
+      "image": "031.jpg",
+      "description": "A man walking on the street wearing a casual outfit consisting of a short-sleeve white button-up shirt, light gray cargo pants, white sneakers, and blue reflective sunglasses. He carries a black crossbody bag and accessorizes with a necklace.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -2561,7 +3680,8 @@
         "color_palette": [
           "white",
           "gray",
-          "black"
+          "black",
+          "blue"
         ],
         "pattern": [
           "solid"
@@ -2572,9 +3692,9 @@
         "consumer_profile": [
           "young adult"
         ],
-        "season": "spring",
+        "season": "summer",
         "season_normalized": [
-          "spring"
+          "summer"
         ],
         "location_scene": "street",
         "location_scene_normalized": [
@@ -2583,102 +3703,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
-        "season": true,
-        "location_scene": true
-      }
-    },
-    {
-      "image": "031.jpg",
-      "description": "A man walking on the street wearing a casual short-sleeve white button-up shirt paired with light gray cargo pants and white sneakers. He accessorizes with reflective sunglasses and a black crossbody bag, creating a relaxed and practical streetwear look.",
-      "expected": {
-        "garment_type": [
-          "shirt",
-          "pants"
-        ],
-        "style": [
-          "streetwear",
-          "casual"
-        ],
-        "material": [],
-        "color_palette": [
-          "white",
-          "gray",
-          "black"
-        ],
-        "pattern": [
-          "solid"
-        ],
-        "occasion": [
-          "casual"
-        ],
-        "consumer_profile": [
-          "young adult"
-        ],
-        "season": "spring",
-        "season_normalized": [
-          "spring"
-        ],
-        "location_scene": "street",
-        "location_scene_normalized": [
-          "street"
-        ]
-      },
-      "predicted": {
-        "garment_type": [
-          "shirt",
-          "pants",
-          "sneakers",
-          "bag"
-        ],
-        "style": [
-          "streetwear",
-          "casual"
-        ],
-        "material": [],
-        "color_palette": [
-          "white",
-          "gray",
-          "black"
-        ],
-        "pattern": [
-          "solid"
-        ],
-        "occasion": [
-          "casual"
-        ],
-        "consumer_profile": [
-          "young adult"
-        ],
-        "season": "spring",
-        "season_normalized": [
-          "spring"
-        ],
-        "location_scene": "street",
-        "location_scene_normalized": [
-          "street"
-        ]
-      },
-      "matches": {
-        "garment_type": true,
-        "style": true,
-        "material": "skipped",
-        "color_palette": true,
-        "pattern": true,
-        "occasion": true,
-        "consumer_profile": true,
-        "season": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "season": false,
         "location_scene": true
       }
     },
     {
       "image": "032.jpg",
-      "description": "A man wearing a dark denim jacket and matching pants with light geometric patterns, paired with a plain white t-shirt underneath. The jacket has a relaxed, oversized fit with button closures and chest pockets.",
+      "description": "The outfit features a dark denim jacket and matching pants with light geometric patterns. The jacket has a relaxed, oversized fit with button closures and chest pockets. Underneath, a plain white t-shirt adds contrast. The look is casual and streetwear-inspired, combining comfort with bold pattern details.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -2728,7 +3795,7 @@
           "cotton"
         ],
         "color_palette": [
-          "dark blue",
+          "black",
           "white"
         ],
         "pattern": [
@@ -2752,19 +3819,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "033.jpg",
-      "description": "A woman wearing a stylish, all-white ensemble consisting of a tailored blazer with a deep neckline and wide-leg trousers. The outfit has a minimalist and elegant vibe, suitable for warm weather and urban settings.",
+      "description": "A woman wearing a stylish, all-white ensemble consisting of a tailored blazer with a deep neckline and wide-leg trousers. The outfit has a minimalist and elegant vibe, with clean lines and a relaxed yet sophisticated fit.",
       "expected": {
         "garment_type": [
           "blazer",
@@ -2804,7 +3906,7 @@
         ],
         "style": [
           "minimalist",
-          "chic"
+          "elegant"
         ],
         "material": [],
         "color_palette": [
@@ -2814,8 +3916,8 @@
           "solid"
         ],
         "occasion": [
-          "casual",
-          "smart casual"
+          "formal",
+          "business casual"
         ],
         "consumer_profile": [
           "young adult",
@@ -2825,26 +3927,56 @@
         "season_normalized": [
           "spring"
         ],
-        "location_scene": "street",
+        "location_scene": "urban",
         "location_scene_normalized": [
           "street"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
-        "occasion": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "occasion": false,
+        "occasion_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "034.jpg",
-      "description": "A man wearing a casual streetwear outfit consisting of a black denim jacket over a plain white t-shirt, paired with black pants. The jacket has a slightly oversized fit with rolled-up sleeves, and the look is accessorized with a wristwatch and a bracelet.",
+      "description": "A man wearing a casual streetwear outfit consisting of a black denim jacket over a plain white t-shirt, paired with black pants. The jacket sleeves are rolled up, revealing a tattooed forearm and a wristwatch, adding a subtle edgy detail to the look.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -2918,19 +4050,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "035.jpg",
-      "description": "A young woman wearing a fitted black short-sleeve button-up shirt paired with high-waisted, wide-leg dark denim jeans. The outfit combines a sleek top with relaxed, oversized denim pants, creating a casual yet stylish look.",
+      "description": "A young woman wearing a fitted black short-sleeve button-up shirt paired with high-waisted, wide-leg dark denim jeans. The outfit combines a sleek top with relaxed, oversized denim pants, creating a balanced casual look.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -2990,10 +4157,8 @@
         "consumer_profile": [
           "young adult"
         ],
-        "season": "fall",
-        "season_normalized": [
-          "fall"
-        ],
+        "season": null,
+        "season_normalized": [],
         "location_scene": "studio",
         "location_scene_normalized": [
           "studio"
@@ -3001,19 +4166,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": false,
+        "style_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
-        "season": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "season": false,
         "location_scene": false
       }
     },
     {
       "image": "036.jpg",
-      "description": "The outfit features a casual streetwear look with a light pink oversized hoodie paired with vibrant purple paisley-patterned pants. The look is accessorized with a beige knit beanie, black round sunglasses, and white chunky sneakers with purple socks, creating a bold and colorful ensemble suitable for fall.",
+      "description": "A casual streetwear outfit featuring a light pink oversized hoodie paired with vibrant purple paisley-patterned pants. The look is completed with white sneakers, purple socks, a beige knit beanie, and black sunglasses, creating a bold yet relaxed style.",
       "expected": {
         "garment_type": [
           "hoodie",
@@ -3055,7 +4255,8 @@
           "socks"
         ],
         "style": [
-          "streetwear"
+          "streetwear",
+          "casual"
         ],
         "material": [],
         "color_palette": [
@@ -3086,19 +4287,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 1
+        },
         "pattern": false,
+        "pattern_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "037.jpg",
-      "description": "A floor-length, lavender tulle gown featuring a deep V-neckline and ruffled detailing along the shoulders and skirt. The dress has a high slit on one side, adding a touch of elegance and allure. A sparkling, embellished belt cinches the waist, enhancing the silhouette. The model pairs the dress with nude high-heeled sandals.",
+      "description": "A floor-length, lavender tulle gown featuring a deep V-neckline and ruffled detailing along the shoulders and skirt. The dress has a high slit on one side, adding a touch of elegance and allure. A sparkling, embellished belt cinches the waist, enhancing the silhouette. The overall look is ethereal and glamorous, suitable for formal events.",
       "expected": {
         "garment_type": [
           "dress"
@@ -3145,7 +4376,7 @@
         ],
         "color_palette": [
           "lavender",
-          "neutral"
+          "silver"
         ],
         "pattern": [
           "solid"
@@ -3168,19 +4399,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": false,
+        "color_palette_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "038.jpg",
-      "description": "A young person wearing a casual summer outfit consisting of a short-sleeve floral print shirt and matching shorts, paired with a ribbed yellow tank top underneath. The look is accessorized with sunglasses, a smartwatch, white crew socks with stripes, and beige sneakers.",
+      "description": "A young person wearing a casual summer outfit consisting of a floral short-sleeve button-up shirt and matching shorts, paired with a ribbed yellow tank top underneath. The look is accessorized with sunglasses, a smartwatch, white crew socks with stripes, and beige sneakers.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -3257,12 +4523,42 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
@@ -3347,19 +4643,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "040.jpg",
-      "description": "A young woman wearing a casual streetwear outfit consisting of a loose white cropped shirt paired with oversized light blue denim jeans and black and white sneakers. The look is relaxed and modern, suitable for everyday urban wear.",
+      "description": "The outfit features a casual streetwear look with a loose-fitting white short-sleeve shirt paired with oversized light blue denim jeans. The jeans have a relaxed, wide-leg silhouette and are cuffed at the ankles. The look is completed with sporty black and white sneakers, creating a youthful and comfortable style suitable for everyday wear.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -3434,12 +4760,47 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
@@ -3499,7 +4860,7 @@
           "white",
           "red",
           "green",
-          "light blue",
+          "blue",
           "black"
         ],
         "pattern": [
@@ -3523,19 +4884,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "042.jpg",
-      "description": "A woman wearing a cozy, light blue ribbed knit hoodie paired with light blue jeans, sitting comfortably on a rust-colored sofa while crocheting.",
+      "description": "A casual outfit featuring a cozy, light blue knitted hoodie paired with light wash denim jeans. The look is relaxed and comfortable, suitable for indoor or casual settings.",
       "expected": {
         "garment_type": [
           "sweater",
@@ -3583,8 +4974,8 @@
           "denim"
         ],
         "color_palette": [
-          "light blue",
-          "rust"
+          "blue",
+          "light blue"
         ],
         "pattern": [
           "solid"
@@ -3606,19 +4997,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "material": true,
-        "color_palette": false,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "043.jpg",
-      "description": "A young man wearing a casual streetwear outfit consisting of a dark gray zip-up hoodie, black cargo pants with multiple pockets, and white sneakers with black stripes. The look is relaxed and practical, suitable for everyday wear.",
+      "description": "A young man wearing a casual streetwear outfit consisting of a dark gray zip-up hoodie with a drawstring hood, black cargo pants with multiple pockets, and white sneakers with black stripes.",
       "expected": {
         "garment_type": [
           "hoodie",
@@ -3687,19 +5113,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "044.jpg",
-      "description": "A man wearing a mustard yellow long-sleeve shirt paired with a navy blue puffer vest, dark blue jeans, a mustard yellow wide-brimmed hat, and dark sunglasses. The outfit combines casual and rugged elements suitable for cooler weather.",
+      "description": "A man wearing a mustard yellow long-sleeve shirt paired with a navy blue puffer vest, dark blue jeans, a tan wide-brimmed hat, and dark sunglasses. The outfit combines casual and rugged elements suitable for cooler weather.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -3740,9 +5196,9 @@
       },
       "predicted": {
         "garment_type": [
-          "shirt",
-          "vest",
-          "pants",
+          "long-sleeve shirt",
+          "puffer vest",
+          "jeans",
           "hat",
           "sunglasses"
         ],
@@ -3752,12 +5208,13 @@
         ],
         "material": [
           "cotton",
-          "puffer"
+          "synthetic"
         ],
         "color_palette": [
           "mustard yellow",
           "navy blue",
           "dark blue",
+          "tan",
           "black"
         ],
         "pattern": [
@@ -3780,19 +5237,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 4,
+          "fn": 2
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1
+        },
         "color_palette": false,
+        "color_palette_counts": {
+          "tp": 0,
+          "fp": 5,
+          "fn": 2
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "045.jpg",
-      "description": "A man wearing a blue and black checkered short-sleeve shirt paired with black pants and white sneakers. He accessorizes with sunglasses, a gold watch, and a large patterned handbag with brown leather accents.",
+      "description": "A man wearing a blue and black checkered short-sleeve shirt paired with black pants and white sneakers. He accessorizes with sunglasses, a gold watch, and a large patterned handbag with brown leather accents. The look is casual and modern, suitable for everyday streetwear.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -3829,7 +5321,6 @@
           "bag"
         ],
         "style": [
-          "casual",
           "streetwear"
         ],
         "material": [],
@@ -3849,7 +5340,7 @@
         "consumer_profile": [
           "young adult"
         ],
-        "season": "spring",
+        "season": null,
         "location_scene": "indoor",
         "location_scene_normalized": [
           "indoor"
@@ -3857,19 +5348,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": "skipped",
         "location_scene": true
       }
     },
     {
       "image": "046.jpg",
-      "description": "A young woman wearing an oversized black leather jacket paired with fitted black skinny jeans and chunky black ankle boots, styled for a casual streetwear look in an autumn setting.",
+      "description": "A young woman wearing an oversized black leather jacket paired with fitted black skinny jeans and chunky black ankle boots, styled for a casual streetwear look in a fall setting.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -3939,19 +5460,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "047.jpg",
-      "description": "A striking orange two-piece outfit featuring a long-sleeve top with a front knot and a high-waisted, voluminous skirt with a dramatic thigh-high slit. The ensemble is paired with bright turquoise high heels, creating a bold color contrast.",
+      "description": "A striking orange ensemble featuring a voluminous, long-sleeve top tied at the front, paired with a matching high-waisted skirt with dramatic draping and a high slit, styled with bright turquoise pointed heels.",
       "expected": {
         "garment_type": [
           "top",
@@ -3994,7 +5550,10 @@
           "high fashion",
           "evening"
         ],
-        "material": [],
+        "material": [
+          "satin",
+          "silky"
+        ],
         "color_palette": [
           "orange",
           "turquoise"
@@ -4020,19 +5579,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": false,
+        "material_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "048.jpg",
-      "description": "A striking orange dress with a voluminous, flowing silhouette and long sleeves, featuring a high slit that reveals the leg. The dress has a gathered, ruched design around the waist and a tied detail at the front, creating a dynamic and elegant look. The model pairs the dress with bright turquoise high-heeled shoes, adding a bold pop of contrasting color.",
+      "description": "A vibrant orange dress with a glossy finish, featuring a loose, oversized silhouette with long sleeves and a high slit that reveals the leg. The dress has a gathered, ruched detail at the front and a tied knot at the chest, creating a dynamic and flowing effect. The model pairs the dress with bright turquoise high-heeled shoes, adding a bold color contrast.",
       "expected": {
         "garment_type": [
           "dress"
@@ -4075,7 +5669,7 @@
         ],
         "material": [
           "satin",
-          "silky"
+          "silk-like"
         ],
         "color_palette": [
           "orange",
@@ -4102,19 +5696,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": false,
+        "material_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "049.jpg",
-      "description": "A young man wearing a yellow hoodie layered under a blue and yellow plaid jacket, paired with pinstriped cropped pants, argyle socks, and colorful high-top sneakers. The look combines streetwear elements with a mix of patterns and bold colors.",
+      "description": "The outfit features a layered streetwear look with a yellow hoodie underneath a blue and yellow plaid jacket. The pants are pinstriped and cuffed at the ankles, paired with argyle socks and multicolored high-top sneakers. The look is accessorized with clear-framed glasses and a silver ring, creating a bold and eclectic urban style.",
       "expected": {
         "garment_type": [
           "hoodie",
@@ -4152,8 +5781,7 @@
           "hoodie",
           "jacket",
           "pants",
-          "sneakers",
-          "socks"
+          "sneakers"
         ],
         "style": [
           "streetwear"
@@ -4190,19 +5818,44 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 4,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": "skipped",
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "050.jpg",
-      "description": "A young adult wearing a cozy, cable-knit blue sweater layered over a red shirt, paired with a black and white knit beanie with a pom-pom, standing in a natural outdoor setting.",
+      "description": "A person wearing a cozy, thick cable-knit sweater in a deep blue color, paired with a black and white knit beanie with a pom-pom on top. The sweater has a classic, textured pattern and a relaxed fit, suitable for cooler weather.",
       "expected": {
         "garment_type": [
           "sweater"
@@ -4255,7 +5908,7 @@
           "red"
         ],
         "pattern": [
-          "cable knit",
+          "cable-knit",
           "color block"
         ],
         "occasion": [
@@ -4269,26 +5922,61 @@
         "season_normalized": [
           "fall"
         ],
-        "location_scene": "outdoor field",
+        "location_scene": "outdoor",
         "location_scene_normalized": [
-          "outdoor field"
+          "outdoor"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": false,
+        "pattern_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": false
+        "location_scene": true
       }
     },
     {
       "image": "051.jpg",
-      "description": "A casual outfit featuring a beige cable-knit sweater paired with light blue cropped jeans. The look is accessorized with a large woven straw tote bag holding a folded knit garment, creating a cozy and natural aesthetic.",
+      "description": "A casual outfit featuring a beige cable-knit sweater paired with light blue denim jeans. The look is accessorized with a large woven straw tote bag and a folded knit garment draped over the bag, creating a cozy and relaxed vibe.",
       "expected": {
         "garment_type": [
           "sweater",
@@ -4366,19 +6054,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 2
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "052.jpg",
-      "description": "A casual outfit featuring a chunky white cable-knit sweater paired with relaxed-fit blue denim jeans. The look is cozy and comfortable, suitable for cooler weather.",
+      "description": "A casual outfit featuring a cozy, chunky white cable-knit sweater paired with relaxed-fit blue denim jeans. The look is comfortable and laid-back, suitable for cooler weather.",
       "expected": {
         "garment_type": [
           "sweater",
@@ -4451,19 +6174,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "053.jpg",
-      "description": "A man wearing a black velvet long jacket with intricate gold embroidery featuring floral and leaf motifs, paired with slim black pants and brown leather shoes. The jacket has a high collar and a straight cut, creating a formal and elegant look.",
+      "description": "A male model wearing a black velvet long jacket with intricate gold embroidery featuring floral and leaf motifs. The jacket has a high collar and is paired with slim black pants and dark brown leather shoes, creating a sophisticated and elegant look.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -4502,14 +6260,16 @@
       "predicted": {
         "garment_type": [
           "jacket",
-          "pants"
+          "pants",
+          "shoes"
         ],
         "style": [
           "formal",
           "ethnic"
         ],
         "material": [
-          "velvet"
+          "velvet",
+          "leather"
         ],
         "color_palette": [
           "black",
@@ -4517,8 +6277,7 @@
           "brown"
         ],
         "pattern": [
-          "embroidered",
-          "solid"
+          "embroidered"
         ],
         "occasion": [
           "formal",
@@ -4538,19 +6297,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "054.jpg",
-      "description": "A young woman wearing a white fitted spaghetti strap top paired with a flowy, mid-length floral skirt in red and pink tones. She completes the look with white block-heeled sandals, accessorized with a watch and delicate jewelry, standing in a dry, outdoor setting.",
+      "description": "A young woman wearing a white fitted spaghetti strap top paired with a flowy, mid-length floral skirt in red and pink tones. She completes the look with white block-heeled sandals, accessorized with a watch and delicate jewelry, standing in a dry, outdoor rural setting.",
       "expected": {
         "garment_type": [
           "top",
@@ -4613,21 +6407,51 @@
         "season_normalized": [
           "spring"
         ],
-        "location_scene": "outdoor",
+        "location_scene": "rural",
         "location_scene_normalized": [
-          "outdoor"
+          "rural"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": true
+        "location_scene": false
       }
     },
     {
@@ -4685,7 +6509,8 @@
           "blue"
         ],
         "pattern": [
-          "embroidered"
+          "embroidered",
+          "solid"
         ],
         "occasion": [
           "casual"
@@ -4697,26 +6522,61 @@
         "season_normalized": [
           "spring"
         ],
-        "location_scene": "outdoor field",
+        "location_scene": "outdoor",
         "location_scene_normalized": [
-          "outdoor field"
+          "outdoor"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": false,
+        "pattern_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": false
+        "location_scene": true
       }
     },
     {
       "image": "056.jpg",
-      "description": "A long, loose-fitting white dress with voluminous sleeves featuring colorful floral embroidery on the shoulders and cuffs. The dress has a relaxed, flowing silhouette and is paired with chunky black and white sneakers, creating a casual yet artistic look.",
+      "description": "A long, loose-fitting white dress with voluminous sleeves featuring colorful floral embroidery on the shoulders and cuffs. The dress has a casual, bohemian vibe and is paired with chunky black and white sneakers, suitable for a relaxed outdoor setting.",
       "expected": {
         "garment_type": [
           "dress"
@@ -4760,9 +6620,7 @@
           "bohemian",
           "casual"
         ],
-        "material": [
-          "cotton"
-        ],
+        "material": [],
         "color_palette": [
           "white",
           "red",
@@ -4770,8 +6628,8 @@
           "blue"
         ],
         "pattern": [
-          "embroidered",
-          "solid"
+          "floral",
+          "embroidered"
         ],
         "occasion": [
           "casual"
@@ -4783,19 +6641,54 @@
         "season_normalized": [
           "fall"
         ],
-        "location_scene": "field",
+        "location_scene": "outdoor",
         "location_scene_normalized": [
           "outdoor"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
-        "material": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "material": false,
+        "material_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
         "color_palette": true,
-        "pattern": false,
+        "color_palette_counts": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        },
+        "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
@@ -4848,7 +6741,9 @@
         "color_palette": [
           "black",
           "white",
-          "off-white"
+          "off-white",
+          "orange",
+          "red"
         ],
         "pattern": [
           "graphic",
@@ -4871,19 +6766,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
     },
     {
       "image": "058.jpg",
-      "description": "A woman wearing a bright red knit cardigan and matching red beret, paired with dark blue wide-leg pants and a black top. The outfit combines cozy knitwear with casual denim-style pants, accessorized with black lace fingerless gloves, suitable for cold weather.",
+      "description": "A woman wearing a bright red knit cardigan and matching red beret, paired with dark blue wide-leg pants and a black top. The outfit is cozy and layered, suitable for cold weather, with a casual yet stylish streetwear vibe.",
       "expected": {
         "garment_type": [
           "cardigan",
@@ -4926,22 +6851,20 @@
           "cardigan",
           "beret",
           "pants",
-          "top",
-          "gloves"
+          "top"
         ],
         "style": [
-          "casual",
-          "streetwear"
+          "streetwear",
+          "casual"
         ],
         "material": [
           "knit",
-          "denim",
-          "lace"
+          "denim"
         ],
         "color_palette": [
           "red",
           "black",
-          "dark blue"
+          "blue"
         ],
         "pattern": [
           "solid"
@@ -4963,19 +6886,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "059.jpg",
-      "description": "A woman wearing a plush, multi-colored faux fur jacket with a spotted pattern over a white turtleneck sweater. She pairs the look with high-waisted dark jeans and accessorizes with a white beret and tinted sunglasses, set against a snowy forest background.",
+      "description": "A woman wearing a plush, multi-colored faux fur jacket with a mix of white, black, and brown tones over a white turtleneck sweater. She pairs this with high-waisted dark denim jeans and accessorizes with a white beret and tinted sunglasses, set against a snowy forest background.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -5023,17 +6981,17 @@
         ],
         "material": [
           "faux fur",
-          "knit",
-          "denim"
+          "denim",
+          "knit"
         ],
         "color_palette": [
           "white",
           "black",
-          "beige",
+          "brown",
           "gray"
         ],
         "pattern": [
-          "spotted",
+          "animal print",
           "solid"
         ],
         "occasion": [
@@ -5046,21 +7004,51 @@
         "season_normalized": [
           "winter"
         ],
-        "location_scene": "outdoor",
+        "location_scene": "forest",
         "location_scene_normalized": [
-          "outdoor"
+          "forest"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 4,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 1
+        },
         "pattern": "skipped",
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": true
+        "location_scene": false
       }
     },
     {
@@ -5145,19 +7133,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": false
       }
     },
     {
       "image": "061.jpg",
-      "description": "A man wearing a brown leather jacket over a white sweater, paired with beige cargo pants and olive green lace-up boots. He accessorizes with a beige and brown plaid scarf, a white knit beanie, and round sunglasses. The outfit is styled for cold weather with a casual, streetwear vibe.",
+      "description": "The outfit features a brown leather jacket layered over a white knit sweater, paired with beige cargo pants. The look is accessorized with a beige and brown plaid scarf, a white knit beanie, round sunglasses, and olive green lace-up boots, suitable for cold weather.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -5202,13 +7220,13 @@
           "jacket",
           "sweater",
           "pants",
-          "boots",
           "scarf",
-          "beanie"
+          "beanie",
+          "boots"
         ],
         "style": [
-          "streetwear",
-          "casual"
+          "casual",
+          "streetwear"
         ],
         "material": [
           "leather",
@@ -5235,26 +7253,61 @@
         "season_normalized": [
           "winter"
         ],
-        "location_scene": "street",
+        "location_scene": "outdoor",
         "location_scene_normalized": [
-          "street"
+          "outdoor"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": false
+        "location_scene": true
       }
     },
     {
       "image": "062.jpg",
-      "description": "A young woman wearing a colorful, loosely knit sweater with wide sleeves in shades of red, blue, cream, and pink, paired with a light denim mini skirt with a flared hem. She accessorizes with bold white cat-eye sunglasses with red lenses, creating a playful and vibrant streetwear look.",
+      "description": "A colorful, loosely knit sweater featuring wide horizontal stripes in red, blue, cream, and pink tones paired with a light denim mini skirt with a flared hem. The look is accessorized with bold white cat-eye sunglasses with red lenses, creating a playful and vibrant street style outfit.",
       "expected": {
         "garment_type": [
           "sweater",
@@ -5312,7 +7365,6 @@
           "white"
         ],
         "pattern": [
-          "color block",
           "striped"
         ],
         "occasion": [
@@ -5332,19 +7384,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
     },
     {
       "image": "063.jpg",
-      "description": "The outfit features a casual, nautical-inspired look with a loose-fitting, short-sleeve striped top paired with a high-waisted, pleated midi skirt in a deep green color. The top has a sailor collar detail with a black tie and lace accents on the sleeves. The look is completed with platform lace-up shoes in a matching striped pattern and a large straw hat, adding a summery, relaxed vibe.",
+      "description": "A young woman wearing a casual outfit consisting of a striped short-sleeve top with lace details on the sleeves, a dark green pleated midi skirt, and platform lace-up shoes with a striped pattern. She accessorizes with a large straw hat and a bracelet, standing in a bright architectural corridor.",
       "expected": {
         "garment_type": [
           "top",
@@ -5387,16 +7474,17 @@
           "hat"
         ],
         "style": [
-          "casual",
-          "nautical"
+          "casual"
         ],
-        "material": [],
+        "material": [
+          "cotton",
+          "straw"
+        ],
         "color_palette": [
           "white",
           "gray",
-          "black",
-          "green",
-          "natural"
+          "dark green",
+          "beige"
         ],
         "pattern": [
           "striped",
@@ -5413,21 +7501,51 @@
         "season_normalized": [
           "spring"
         ],
-        "location_scene": "urban",
+        "location_scene": "architectural corridor",
         "location_scene_normalized": [
-          "street"
+          "architectural corridor"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": true
+        "location_scene": false
       }
     },
     {
@@ -5469,19 +7587,13 @@
       "predicted": {
         "garment_type": [
           "blouse",
-          "skirt",
-          "bag",
-          "shoes",
-          "hat"
+          "skirt"
         ],
         "style": [
           "casual",
           "bohemian"
         ],
-        "material": [
-          "straw",
-          "fabric"
-        ],
+        "material": [],
         "color_palette": [
           "pink",
           "black",
@@ -5503,26 +7615,56 @@
         "season_normalized": [
           "spring"
         ],
-        "location_scene": "outdoor",
+        "location_scene": "street",
         "location_scene_normalized": [
-          "outdoor"
+          "street"
         ]
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
-        "location_scene": false
+        "location_scene": true
       }
     },
     {
       "image": "065.jpg",
-      "description": "A woman stands on a snowy path wearing a bright blue knee-length coat over a grey skirt and beige top. She accessorizes with a red beret, red boots, purple tights, and a red handbag, holding a bouquet of red tulips. The outfit combines vibrant colors with winter layering for a cheerful, stylish look.",
+      "description": "A woman stands on a snowy path wearing a bright blue knee-length coat over a grey skirt and beige top. She accessorizes with a red beret, red boots, and purple tights, holding a bouquet of red tulips and a red handbag. The outfit combines vibrant colors with winter layering for a cheerful, stylish look.",
       "expected": {
         "garment_type": [
           "coat",
@@ -5602,19 +7744,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 4,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "066.jpg",
-      "description": "A woman wearing a light, floral-patterned dress with puffed long sleeves and a square neckline. She has a long braid and wears a blue headband. She is holding a white fabric with colorful floral embroidery, standing outdoors in a green park setting.",
+      "description": "A woman wearing a light, floral-patterned dress with puffed long sleeves and a square neckline. She accessorizes with a bright blue headband and holds a white fabric featuring colorful floral embroidery. Her long hair is styled in a thick braid.",
       "expected": {
         "garment_type": [
           "dress"
@@ -5660,7 +7832,7 @@
           "light blue",
           "green",
           "white",
-          "multicolor embroidery"
+          "multicolor (floral embroidery)"
         ],
         "pattern": [
           "floral"
@@ -5683,19 +7855,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "067.jpg",
-      "description": "A woman wearing a fitted beige turtleneck sweater paired with a high-waisted, knee-length burgundy pencil skirt. She accessorizes with light pink gloves and a beige faux fur coat draped over one shoulder. She completes the look with black ankle boots and a beige beret, standing in a festive outdoor winter setting with Christmas trees and snow.",
+      "description": "A woman wearing a fitted beige turtleneck sweater paired with a high-waisted, knee-length burgundy pencil skirt. She accessorizes with a beige faux fur coat draped over one shoulder, a matching beige beret, pink gloves, and black ankle boots with heels. The outfit is styled for cold weather with a chic and elegant winter look.",
       "expected": {
         "garment_type": [
           "sweater",
@@ -5735,13 +7937,13 @@
           "sweater",
           "skirt",
           "coat",
+          "beret",
           "gloves",
-          "boots",
-          "hat"
+          "boots"
         ],
         "style": [
-          "casual",
-          "chic"
+          "chic",
+          "elegant"
         ],
         "material": [
           "knit",
@@ -5767,26 +7969,61 @@
         "season_normalized": [
           "winter"
         ],
-        "location_scene": "outdoor festive",
+        "location_scene": "outdoor holiday display",
         "location_scene_normalized": [
-          "outdoor festive"
+          "outdoor holiday display"
         ]
       },
       "matches": {
         "garment_type": true,
-        "style": true,
+        "garment_type_counts": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 0
+        },
+        "style": false,
+        "style_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
         "material": true,
+        "material_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": false
       }
     },
     {
       "image": "068.jpg",
-      "description": "A young man wearing a casual outfit consisting of a plain white t-shirt, mustard-colored pants, red sneakers, and black sunglasses, standing on stairs in an urban setting.",
+      "description": "A young man wearing a casual outfit consisting of a plain white short-sleeve t-shirt, mustard-colored pants, red sneakers, and black sunglasses, standing on stairs in an urban setting.",
       "expected": {
         "garment_type": [
           "shirt",
@@ -5845,8 +8082,10 @@
         "consumer_profile": [
           "young adult"
         ],
-        "season": null,
-        "season_normalized": [],
+        "season": "spring",
+        "season_normalized": [
+          "spring"
+        ],
         "location_scene": "street",
         "location_scene_normalized": [
           "street"
@@ -5854,19 +8093,49 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
         "material": "skipped",
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 1,
+          "fp": 3,
+          "fn": 1
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": false,
         "location_scene": true
       }
     },
     {
       "image": "069.jpg",
-      "description": "A man wearing a cozy, oversized beige sherpa jacket over a black turtleneck, paired with light-wash ripped jeans featuring black text details. He accessorizes with white chunky sneakers, white rectangular sunglasses, a black beanie, and silver necklaces, creating a modern streetwear look.",
+      "description": "A man wearing a cozy, oversized beige sherpa jacket over a black turtleneck, paired with light-wash ripped jeans featuring black text details. He accessorizes with white sneakers, white rectangular sunglasses, a black beanie, and silver necklaces, creating a modern streetwear look.",
       "expected": {
         "garment_type": [
           "jacket",
@@ -5909,7 +8178,8 @@
           "pants",
           "sneakers",
           "beanie",
-          "sunglasses"
+          "sunglasses",
+          "necklace"
         ],
         "style": [
           "streetwear"
@@ -5947,19 +8217,54 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 6,
+          "fn": 1
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": true,
+        "material_counts": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
     },
     {
       "image": "070.jpg",
-      "description": "A loose-fitting, long white dress with voluminous sleeves featuring colorful floral embroidery on the chest, sleeves, and cuffs. The dress has a relaxed, bohemian vibe with a natural, earthy aesthetic.",
+      "description": "A loose-fitting, long white dress with voluminous sleeves featuring intricate floral embroidery in multiple colors on the sleeves and around the neckline. The dress has a relaxed, bohemian vibe and is styled in a natural outdoor setting.",
       "expected": {
         "garment_type": [
           "dress"
@@ -6011,8 +8316,7 @@
           "black"
         ],
         "pattern": [
-          "embroidered",
-          "solid"
+          "embroidered"
         ],
         "occasion": [
           "casual"
@@ -6031,12 +8335,47 @@
       },
       "matches": {
         "garment_type": true,
+        "garment_type_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "style": true,
+        "style_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "material": false,
+        "material_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
         "color_palette": true,
+        "color_palette_counts": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        },
         "pattern": true,
+        "pattern_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "occasion": true,
+        "occasion_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "consumer_profile": true,
+        "consumer_profile_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
         "season": true,
         "location_scene": true
       }
