@@ -6,7 +6,7 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from .classifier import classify_image
-from .config import UPLOAD_DIR
+from .config import CORS_ORIGINS, UPLOAD_DIR
 from .db import get_connection, init_db
 from .schemas import GarmentAttributes
 from pydantic import BaseModel, Field
@@ -16,11 +16,7 @@ app = FastAPI(title="Fashion Inspiration API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5174",
-    ],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
