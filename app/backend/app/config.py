@@ -8,7 +8,7 @@ except ImportError:
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-PROJECT_ROOT = BASE_DIR.parent
+PROJECT_ROOT = BASE_DIR.parents[1]
 
 if load_dotenv:
     load_dotenv(PROJECT_ROOT / ".env")

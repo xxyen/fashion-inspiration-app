@@ -6,7 +6,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.append(str(ROOT / "backend"))
+sys.path.append(str(ROOT / "app/backend"))
 
 from app.classifier import classify_image
 

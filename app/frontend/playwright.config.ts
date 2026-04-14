@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const configDir = path.dirname(fileURLToPath(import.meta.url));
-const rootDir = path.resolve(configDir, "..");
+const rootDir = path.resolve(configDir, "../..");
 const runId = Date.now();
 const databasePath = `/tmp/fashion-e2e-${runId}.db`;
 const uploadDir = `/tmp/fashion-e2e-uploads-${runId}`;
@@ -18,14 +18,14 @@ export default defineConfig({
   },
   webServer: [
     {
-      command: `DATABASE_PATH=${databasePath} UPLOAD_DIR=${uploadDir} OPENAI_API_KEY= ./.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8010`,
-      cwd: path.join(rootDir, "backend"),
+      command: `DATABASE_PATH=${databasePath} UPLOAD_DIR=${uploadDir} OPENAI_API_KEY= ./.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8010`,
+      cwd: path.join(rootDir, "app/backend"),
       url: `${apiBaseUrl}/api/health`,
       reuseExistingServer: false
     },
     {
       command: `VITE_API_BASE_URL=${apiBaseUrl} npm run dev -- --host 127.0.0.1 --port 5174`,
-      cwd: path.join(rootDir, "frontend"),
+      cwd: path.join(rootDir, "app/frontend"),
       url: appBaseUrl,
       reuseExistingServer: false
     }

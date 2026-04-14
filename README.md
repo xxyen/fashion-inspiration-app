@@ -11,13 +11,14 @@ The planned stack is:
 ## Structure
 
 ```text
-frontend/          React + Tailwind app
-frontend/e2e/      Playwright end-to-end tests
-backend/           FastAPI app
-backend/app/schema.sql SQLite image metadata schema
-backend/uploads/   Future local upload storage
-eval/              Evaluation dataset and scripts
-tests/backend/     Backend unit and integration tests
+app/                    Application source
+app/backend/            FastAPI app
+app/backend/app/        Backend package, schema, classifier, and API routes
+app/backend/uploads/    Local upload storage
+app/frontend/           React + Tailwind app
+app/frontend/e2e/       Playwright end-to-end tests
+eval/                   Evaluation script and labeled test set
+tests/backend/          Backend unit and integration tests
 ```
 
 ## Local Setup
@@ -25,14 +26,14 @@ tests/backend/     Backend unit and integration tests
 Backend:
 
 ```bash
-cd backend
+cd app/backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
-The API starts at `http://localhost:8000`. On startup, the backend initializes the SQLite schema in `backend/app/schema.sql`.
+The API starts at `http://localhost:8000`. On startup, the backend initializes the SQLite schema in `app/backend/app/schema.sql`.
 
 Current endpoints:
 
@@ -51,12 +52,12 @@ DELETE /api/images/{image_id}
 `PATCH /api/images/{image_id}/annotations` updates human-entered designer tags and notes.
 `DELETE /api/images/{image_id}` removes the database record and the uploaded local image file.
 
-Uploaded images are classified through `backend/app/classifier.py` with the configured multimodal model. If no API key is configured, the classifier returns deterministic placeholder metadata so the upload and gallery workflow remains testable.
+Uploaded images are classified through `app/backend/app/classifier.py` with the configured multimodal model. If no API key is configured, the classifier returns deterministic placeholder metadata so the upload and gallery workflow remains testable.
 
 Frontend:
 
 ```bash
-cd frontend
+cd app/frontend
 npm install
 npm run dev
 ```
@@ -68,24 +69,24 @@ The frontend can upload an image with optional designer and location context, re
 Backend tests:
 
 ```bash
-./backend/.venv/bin/pytest
+./app/backend/.venv/bin/python -m pytest
 ```
 
 Frontend build:
 
 ```bash
-cd frontend
+cd app/frontend
 npm run build
 ```
 
 End-to-end test:
 
 ```bash
-cd frontend
+cd app/frontend
 npm run test:e2e
 ```
 
-The E2E test starts its own backend and frontend servers on `127.0.0.1:8010` and `127.0.0.1:5174`, uses a temporary SQLite database under `/tmp`, clears `OPENAI_API_KEY` so classification is deterministic, and runs with the locally installed Google Chrome browser.
+The E2E test starts its own backend and frontend servers on `127.0.0.1:8010` and `127.0.0.1:5174`, uses a temporary SQLite database under `/tmp`, clears `OPENAI_API_KEY` so classification is deterministic, and runs with the locally installed Google Chrome browser. The Playwright spec lives under `app/frontend/e2e` because it runs through the frontend package and its local Playwright dependency.
 
 ## Evaluation
 
@@ -94,7 +95,7 @@ Use 50-80 Pexels fashion or street-fashion images under `eval/images`, with manu
 Prepare downloaded images with consistent names:
 
 ```bash
-./backend/.venv/bin/python eval/prepare_images.py /path/to/raw/pexels-downloads --max-size 1024 --quality 85
+./app/backend/.venv/bin/python eval/prepare_images.py /path/to/raw/pexels-downloads --max-size 1024 --quality 85
 ```
 
 This resizes each image to a maximum side length of 1024px, converts it to optimized JPEG, saves it under `eval/images` as `001.jpg`, `002.jpg`, and so on, and writes `eval/image_manifest.json`. Fill in `source_url` and `photographer` in that manifest where available.
@@ -102,7 +103,7 @@ This resizes each image to a maximum side length of 1024px, converts it to optim
 Generate AI-assisted draft labels:
 
 ```bash
-./backend/.venv/bin/python eval/draft_labels.py --images eval/images --manifest eval/image_manifest.json
+./app/backend/.venv/bin/python eval/draft_labels.py --images eval/images --manifest eval/image_manifest.json
 ```
 
 This writes `eval/labels.draft.json`. Review and correct the draft labels manually, then save the final version as `eval/labels.json`. The draft is only a labeling aid; `eval/labels.json` should represent manually reviewed expected attributes.
@@ -110,7 +111,7 @@ This writes `eval/labels.draft.json`. Review and correct the draft labels manual
 Run:
 
 ```bash
-./backend/.venv/bin/python eval/run_eval.py --labels eval/labels.json --images eval/images
+./app/backend/.venv/bin/python eval/run_eval.py --labels eval/labels.json --images eval/images
 ```
 
 The script writes `eval/results.json` and prints per-attribute accuracy. Empty expected values are skipped for that field, so visually ambiguous material or consumer labels do not unfairly count as errors.
@@ -151,10 +152,11 @@ Current evaluation summary on 70 manually reviewed Pexels images:
 | consumer_profile | 0.971 | Directionally useful, but still a subjective merchandising label. |
 | style | 0.943 | Good when expected labels allow multiple valid styles. |
 | color_palette | 0.943 | Strong on dominant visible colors. |
-| pattern | 0.912 | Good for obvious solid, striped, embroidered, and graphic patterns. |
+| pattern | 0.926 | Good for obvious solid, striped, embroidered, and graphic patterns. |
+| occasion | 0.971 | Strong on broad use cases such as casual, formal, and workwear. |
 | season | 0.897 | Scored with light normalization such as autumn to fall. |
 | material | 0.837 | Evaluated only when manually labeled as visually apparent; 27 ambiguous cases were skipped. |
-| location_scene | 0.557 | Scored against a small controlled taxonomy rather than raw exact string matching. |
+| location_scene | 0.571 | Scored against a small controlled taxonomy rather than raw exact string matching. |
 
 Scene-level location is normalized before scoring because raw scene labels are open-ended. For example, street, city street, sidewalk, and urban street are normalized to urban street. This is more meaningful than exact string matching, but still imperfect because some scenes are genuinely ambiguous, such as outdoor versus urban street. The model performs best on visually grounded attributes such as garment type, color palette, pattern, and broad occasion. Trend notes and natural-language descriptions are reviewed qualitatively because they are open-ended inspiration aids rather than strict classification fields.
 
@@ -165,8 +167,8 @@ Copy `.env.example` to `.env` and fill in `OPENAI_API_KEY` when the real multimo
 ```text
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-4.1-mini
-DATABASE_PATH=backend/fashion.db
-UPLOAD_DIR=backend/uploads
+DATABASE_PATH=app/backend/fashion.db
+UPLOAD_DIR=app/backend/uploads
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
