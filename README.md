@@ -189,7 +189,15 @@ The E2E test starts its own backend and frontend servers on `127.0.0.1:8010` and
 | Synchronous classification | Simple to build and easy to test in one day. | Slow classifier calls block the upload response. |
 | Human designer notes | Captures context that AI may miss. | Notes can be subjective or sensitive, so future learning should require opt-in. |
 
-The classifier can be swapped by changing `OPENAI_MODEL`. The prompt asks for strict JSON with a fixed schema and tells the model not to guess exact city, country, or continent from image content alone. The backend validates and normalizes model output before storage.
+## AI Integration
+
+The frontend does not call the AI model directly. Images are uploaded to FastAPI, and the backend classifier calls the OpenAI multimodal model with the image and a structured prompt.
+
+The prompt asks for strict JSON with a fixed fashion schema: description, garment type, style, material, color, pattern, season, occasion, consumer profile, trend notes, and scene context. The model is also told not to guess exact city, country, or continent from the image alone.
+
+After the model responds, the backend parses the JSON, handles simple formatting issues, validates the result with Pydantic, and normalizes fields before saving to SQLite. If `OPENAI_API_KEY` is not set, the app uses fallback classification so local development and E2E tests can still run.
+
+The AI metadata is used in three places: gallery tags and image details, dynamic filters, and SQLite FTS5 search. The model can be changed by setting `OPENAI_MODEL`, so the classifier can be swapped without changing the frontend workflow.
 
 Images in the evaluation set are preprocessed with `eval/prepare_images.py`: renamed, resized to a maximum side length, converted to JPEG, and corrected for EXIF orientation. This keeps evaluation inputs consistent without removing useful visual detail.
 
