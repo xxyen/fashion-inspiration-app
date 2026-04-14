@@ -32,7 +32,7 @@ SEASON_ALIASES = {
 }
 
 SCENE_ALIASES = {
-    "urban street": {
+    "street": {
         "street",
         "urban street",
         "city street",

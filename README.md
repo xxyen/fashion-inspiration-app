@@ -197,14 +197,21 @@ Current results:
 | Field | Accuracy | Notes |
 | --- | ---: | --- |
 | garment_type | 0.971 | Strong on visible garment categories. |
-| occasion | 0.971 | Strong on broad use cases such as casual, formal, and workwear. |
-| consumer_profile | 0.971 | Useful, but still subjective. |
-| style | 0.943 | Good when labels allow multiple valid styles. |
-| color_palette | 0.943 | Strong on dominant visible colors. |
-| pattern | 0.926 | Good for obvious solid, striped, embroidered, and graphic patterns. |
-| season | 0.897 | Scored with normalization such as autumn to fall. |
-| material | 0.837 | Skips cases where material is visually unclear. |
-| location_scene | 0.571 | Harder because scene labels are open-ended. |
+| occasion | 1.000 | Strong on broad use cases such as casual, formal, and workwear. |
+| consumer_profile | 1.000 | Useful, but still subjective. |
+| style | 0.957 | Good when labels allow multiple valid styles. |
+| color_palette | 0.929 | Strong on dominant visible colors. |
+| pattern | 0.897 | Good for obvious solid, striped, embroidered, and graphic patterns. |
+| season | 0.794 | Scored with normalization such as autumn to fall. |
+| material | 0.907 | Skips cases where material is visually unclear. |
+| location_scene | 0.743 | Harder because scene labels are open-ended. |
+
+Field notes:
+
+- `occasion` scores well because the labels are broad, such as casual, formal, work, or vacation.
+- `consumer_profile` also scores well, but it is subjective. I treat it as a merchandising hint, not a hard truth.
+- `season` is lower because many images do not have strong visual season evidence. The prompt is intentionally conservative, so the model should avoid guessing when the image is unclear.
+- `location_scene` improved after using shorter scene labels, but it is still harder than garment or color because scenes can be ambiguous.
 
 Evaluation trade-offs:
 

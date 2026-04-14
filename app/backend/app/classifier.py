@@ -14,7 +14,8 @@ logger = logging.getLogger(__name__)
 CLASSIFICATION_PROMPT = """
 Analyze this fashion inspiration image for a design team.
 
-Return only valid JSON with this exact top-level shape:
+Return only valid JSON with this exact top-level shape. Do not wrap the JSON in markdown.
+
 {
   "description": "A rich natural-language description of the visible outfit or garment.",
   "attributes": {
@@ -31,13 +32,19 @@ Return only valid JSON with this exact top-level shape:
       "continent": null,
       "country": null,
       "city": null,
-      "scene": "urban street"
+      "scene": "street"
     }
   }
 }
 
-Use null when the image does not provide enough evidence. Do not guess exact city,
-country, or continent from visual appearance alone.
+Rules:
+- Only include attributes that are visually supported by the image.
+- Use [] for unknown list fields and null for unknown scalar fields.
+- Use concise, reusable labels instead of long phrases.
+- Prefer common garment labels such as dress, jacket, coat, pants, skirt, top, shirt, hoodie, sweater, sneakers, boots, bag.
+- Prefer common pattern labels such as solid, striped, floral, plaid, graphic, embroidered, animal print, color block.
+- Keep trend_notes as short phrases, not full sentences.
+- Do not guess exact city, country, or continent from visual appearance alone.
 """
 
 
