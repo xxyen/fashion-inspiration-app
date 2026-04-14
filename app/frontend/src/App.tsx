@@ -65,13 +65,13 @@ const filterLabels: Record<keyof Omit<GalleryFilters, "query">, string> = {
 const primaryFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
   "garment_type",
   "style",
-  "color_palette",
-  "season",
-  "country",
-  "designer"
+  "color_palette"
 ];
 
 const advancedFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
+  "season",
+  "country",
+  "designer",
   "material",
   "pattern",
   "occasion",
@@ -91,6 +91,7 @@ function App() {
   const [isUploading, setIsUploading] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [savingAnnotationId, setSavingAnnotationId] = useState<number | null>(null);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   function imageQueryParams(nextFilters = filters) {
@@ -232,11 +233,11 @@ function App() {
   function renderFilterSelect(key: keyof Omit<GalleryFilters, "query">) {
     return (
       <label className="block" key={key}>
-        <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-neutral-500">
+        <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-neutral-500">
           {filterLabels[key]}
         </span>
         <select
-          className="w-full rounded-md border border-stone-300 bg-white px-3 py-2"
+          className="w-full rounded-md border border-stone-300 bg-white px-3 py-2 text-sm"
           onChange={(event) => updateFilter(key, event.target.value)}
           value={filters[key]}
         >
@@ -252,6 +253,7 @@ function App() {
   }
 
   const selectedImage = images.find((image) => image.id === selectedImageId) ?? images[0] ?? null;
+  const activeAdvancedFilterCount = advancedFilterKeys.filter((key) => filters[key]).length;
 
   return (
     <main className="min-h-screen bg-stone-50 text-neutral-900">
@@ -388,36 +390,46 @@ function App() {
               </button>
             </div>
 
-            <div className="mb-5 rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
-              <div className="grid gap-3 md:grid-cols-[1fr_auto]">
+            <div className="mb-5 rounded-lg border border-stone-200 bg-white p-3 shadow-sm">
+              <div className="grid gap-3 lg:grid-cols-[minmax(220px,1fr)_auto_auto]">
                 <input
-                  className="rounded-md border border-stone-300 px-3 py-2"
+                  className="rounded-md border border-stone-300 px-3 py-2 text-sm"
                   onChange={(event) => updateFilter("query", event.target.value)}
                   placeholder="Search denim, embroidered, artisan market..."
                   value={filters.query}
                 />
                 <button
-                  className="rounded-md border border-stone-300 px-4 py-2 text-sm font-medium"
+                  className="rounded-md border border-stone-300 px-3 py-2 text-sm font-medium"
                   onClick={clearFilters}
                   type="button"
                 >
                   Clear filters
                 </button>
+                <button
+                  className="rounded-md border border-stone-300 px-3 py-2 text-sm font-medium"
+                  onClick={() => setShowAdvancedFilters((current) => !current)}
+                  type="button"
+                >
+                  {showAdvancedFilters
+                    ? "Hide filters"
+                    : `More filters${activeAdvancedFilterCount ? ` (${activeAdvancedFilterCount})` : ""}`}
+                </button>
               </div>
 
-              <div className="mt-4">
-                <p className="mb-2 text-sm font-semibold text-neutral-700">Primary filters</p>
-                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="mt-3">
+                <div className="grid gap-3 sm:grid-cols-3">
                   {primaryFilterKeys.map(renderFilterSelect)}
                 </div>
               </div>
 
-              <div className="mt-4 border-t border-stone-200 pt-4">
-                <p className="mb-2 text-sm font-semibold text-neutral-700">Advanced filters</p>
-                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                  {advancedFilterKeys.map(renderFilterSelect)}
+              {showAdvancedFilters ? (
+                <div className="mt-3 border-t border-stone-200 pt-3">
+                  <p className="mb-2 text-xs font-semibold text-neutral-600">Advanced filters</p>
+                  <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                    {advancedFilterKeys.map(renderFilterSelect)}
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
 
             {images.length === 0 && !isLoading ? (
