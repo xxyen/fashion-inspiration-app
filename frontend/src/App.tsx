@@ -1,18 +1,91 @@
 import { FormEvent, useEffect, useState } from "react";
-import { deleteImage, fetchImages, getImageUrl, uploadImage } from "./api";
-import type { ImageRecord } from "./types";
+import { deleteImage, fetchFilters, fetchImages, getImageUrl, uploadImage } from "./api";
+import type { FilterOptions, ImageRecord } from "./types";
+
+type GalleryFilters = {
+  query: string;
+  garment_type: string;
+  style: string;
+  material: string;
+  color_palette: string;
+  pattern: string;
+  season: string;
+  occasion: string;
+  consumer_profile: string;
+  country: string;
+  city: string;
+  designer: string;
+};
+
+const emptyFilters: GalleryFilters = {
+  query: "",
+  garment_type: "",
+  style: "",
+  material: "",
+  color_palette: "",
+  pattern: "",
+  season: "",
+  occasion: "",
+  consumer_profile: "",
+  country: "",
+  city: "",
+  designer: ""
+};
+
+const filterLabels: Record<keyof Omit<GalleryFilters, "query">, string> = {
+  garment_type: "Garment type",
+  style: "Style",
+  material: "Material",
+  color_palette: "Color",
+  pattern: "Pattern",
+  season: "Season",
+  occasion: "Occasion",
+  consumer_profile: "Consumer",
+  country: "Country",
+  city: "City",
+  designer: "Designer"
+};
+
+const primaryFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
+  "garment_type",
+  "style",
+  "color_palette",
+  "season",
+  "country",
+  "designer"
+];
+
+const advancedFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
+  "material",
+  "pattern",
+  "occasion",
+  "consumer_profile",
+  "city"
+];
 
 function App() {
   const [images, setImages] = useState<ImageRecord[]>([]);
+  const [filterOptions, setFilterOptions] = useState<FilterOptions | null>(null);
+  const [filters, setFilters] = useState<GalleryFilters>(emptyFilters);
   const [isLoading, setIsLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  async function loadImages() {
+  function imageQueryParams(nextFilters = filters) {
+    const params = new URLSearchParams();
+    Object.entries(nextFilters).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value);
+      }
+    });
+    return params;
+  }
+
+  async function loadImages(nextFilters = filters) {
     setIsLoading(true);
     try {
-      setImages(await fetchImages());
+      setImages(await fetchImages(imageQueryParams(nextFilters)));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load images");
     } finally {
@@ -22,7 +95,21 @@ function App() {
 
   useEffect(() => {
     loadImages();
+    fetchFilters()
+      .then(setFilterOptions)
+      .catch((err) => setError(err instanceof Error ? err.message : "Failed to load filters"));
   }, []);
+
+  function updateFilter(key: keyof GalleryFilters, value: string) {
+    const nextFilters = { ...filters, [key]: value };
+    setFilters(nextFilters);
+    loadImages(nextFilters);
+  }
+
+  function clearFilters() {
+    setFilters(emptyFilters);
+    loadImages(emptyFilters);
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,6 +120,7 @@ function App() {
       await uploadImage(new FormData(form));
       form.reset();
       await loadImages();
+      setFilterOptions(await fetchFilters());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
@@ -46,6 +134,7 @@ function App() {
     try {
       await deleteImage(id);
       setImages((currentImages) => currentImages.filter((image) => image.id !== id));
+      setFilterOptions(await fetchFilters());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Delete failed");
     } finally {
@@ -61,6 +150,28 @@ function App() {
       ...(metadata.color_palette ?? []),
       metadata.season
     ].filter(Boolean);
+  }
+
+  function renderFilterSelect(key: keyof Omit<GalleryFilters, "query">) {
+    return (
+      <label className="block" key={key}>
+        <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-neutral-500">
+          {filterLabels[key]}
+        </span>
+        <select
+          className="w-full rounded-md border border-stone-300 bg-white px-3 py-2"
+          onChange={(event) => updateFilter(key, event.target.value)}
+          value={filters[key]}
+        >
+          <option value="">All</option>
+          {(filterOptions?.[key] ?? []).map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </label>
+    );
   }
 
   return (
@@ -161,11 +272,43 @@ function App() {
               </div>
               <button
                 className="rounded-md border border-stone-300 bg-white px-4 py-2 text-sm font-medium"
-                onClick={loadImages}
+                onClick={() => loadImages()}
                 type="button"
               >
                 Refresh
               </button>
+            </div>
+
+            <div className="mb-5 rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
+              <div className="grid gap-3 md:grid-cols-[1fr_auto]">
+                <input
+                  className="rounded-md border border-stone-300 px-3 py-2"
+                  onChange={(event) => updateFilter("query", event.target.value)}
+                  placeholder="Search denim, embroidered, artisan market..."
+                  value={filters.query}
+                />
+                <button
+                  className="rounded-md border border-stone-300 px-4 py-2 text-sm font-medium"
+                  onClick={clearFilters}
+                  type="button"
+                >
+                  Clear filters
+                </button>
+              </div>
+
+              <div className="mt-4">
+                <p className="mb-2 text-sm font-semibold text-neutral-700">Primary filters</p>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {primaryFilterKeys.map(renderFilterSelect)}
+                </div>
+              </div>
+
+              <div className="mt-4 border-t border-stone-200 pt-4">
+                <p className="mb-2 text-sm font-semibold text-neutral-700">Advanced filters</p>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {advancedFilterKeys.map(renderFilterSelect)}
+                </div>
+              </div>
             </div>
 
             {images.length === 0 && !isLoading ? (

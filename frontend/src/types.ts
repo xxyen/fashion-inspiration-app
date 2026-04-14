@@ -32,3 +32,17 @@ export type ImageRecord = {
   created_at: string;
   updated_at: string;
 };
+
+export type FilterOptions = {
+  garment_type: string[];
+  style: string[];
+  material: string[];
+  color_palette: string[];
+  pattern: string[];
+  season: string[];
+  occasion: string[];
+  consumer_profile: string[];
+  country: string[];
+  city: string[];
+  designer: string[];
+};

@@ -60,7 +60,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-The frontend can upload an image with optional designer and location context, then renders the stored image records and AI metadata returned by `GET /api/images`.
+The frontend can upload an image with optional designer and location context, render stored image records and AI metadata, search the gallery, and filter by dynamically generated garment, consumer, location, time, and designer metadata options.
 
 Backend tests:
 
@@ -84,5 +84,5 @@ If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placehol
 
 ## Next Steps
 
-1. Add frontend search and filter controls.
-2. Add designer annotations, evaluation, and end-to-end tests.
+1. Add designer annotations.
+2. Add evaluation and end-to-end tests.

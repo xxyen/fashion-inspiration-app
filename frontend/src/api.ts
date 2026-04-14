@@ -1,4 +1,4 @@
-import type { ImageRecord } from "./types";
+import type { FilterOptions, ImageRecord } from "./types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
@@ -6,10 +6,19 @@ export function getImageUrl(path: string): string {
   return path.startsWith("http") ? path : `${API_BASE_URL}${path}`;
 }
 
-export async function fetchImages(): Promise<ImageRecord[]> {
-  const response = await fetch(`${API_BASE_URL}/api/images`);
+export async function fetchImages(params = new URLSearchParams()): Promise<ImageRecord[]> {
+  const query = params.toString();
+  const response = await fetch(`${API_BASE_URL}/api/images${query ? `?${query}` : ""}`);
   if (!response.ok) {
     throw new Error("Failed to load image library");
+  }
+  return response.json();
+}
+
+export async function fetchFilters(): Promise<FilterOptions> {
+  const response = await fetch(`${API_BASE_URL}/api/filters`);
+  if (!response.ok) {
+    throw new Error("Failed to load filters");
   }
   return response.json();
 }
