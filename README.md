@@ -48,6 +48,52 @@ tests/backend/          Backend unit and integration tests
 README.md               Setup, architecture notes, and evaluation summary
 ```
 
+System architecture:
+
+```mermaid
+flowchart LR
+    subgraph Client["Frontend"]
+        UI["React + Tailwind UI"]
+        E2E["Playwright E2E"]
+    end
+
+    subgraph API["Backend"]
+        FastAPI["FastAPI routes"]
+        Classifier["Classifier adapter"]
+        Parser["JSON parser + validation"]
+    end
+
+    subgraph Storage["Local Storage"]
+        Files["Uploaded images"]
+        DB["SQLite images table"]
+        FTS["SQLite FTS5 index"]
+    end
+
+    subgraph Eval["Evaluation"]
+        Labels["labels.json"]
+        Results["results.json"]
+        EvalScript["run_eval.py"]
+    end
+
+    Model["OpenAI multimodal model"]
+
+    UI --> FastAPI
+    FastAPI --> Files
+    FastAPI --> Classifier
+    Classifier -- "image + prompt" --> Model
+    Model -- "JSON response" --> Classifier
+    Classifier --> Parser
+    Parser --> DB
+    FastAPI --> DB
+    DB --> FTS
+    FTS --> FastAPI
+    FastAPI --> UI
+    E2E --> UI
+    EvalScript --> Classifier
+    Labels --> EvalScript
+    EvalScript --> Results
+```
+
 Upload flow:
 
 ```text
