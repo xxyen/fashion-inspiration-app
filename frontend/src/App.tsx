@@ -72,6 +72,7 @@ const advancedFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
 
 function App() {
   const [images, setImages] = useState<ImageRecord[]>([]);
+  const [selectedImageId, setSelectedImageId] = useState<number | null>(null);
   const [filterOptions, setFilterOptions] = useState<FilterOptions | null>(null);
   const [filters, setFilters] = useState<GalleryFilters>(emptyFilters);
   const [isLoading, setIsLoading] = useState(true);
@@ -93,7 +94,14 @@ function App() {
   async function loadImages(nextFilters = filters) {
     setIsLoading(true);
     try {
-      setImages(await fetchImages(imageQueryParams(nextFilters)));
+      const nextImages = await fetchImages(imageQueryParams(nextFilters));
+      setImages(nextImages);
+      setSelectedImageId((currentId) => {
+        if (currentId && nextImages.some((image) => image.id === currentId)) {
+          return currentId;
+        }
+        return nextImages[0]?.id ?? null;
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load images");
     } finally {
@@ -142,6 +150,13 @@ function App() {
     try {
       await deleteImage(id);
       setImages((currentImages) => currentImages.filter((image) => image.id !== id));
+      setSelectedImageId((currentId) => {
+        if (currentId !== id) {
+          return currentId;
+        }
+        const remainingImages = images.filter((image) => image.id !== id);
+        return remainingImages[0]?.id ?? null;
+      });
       setFilterOptions(await fetchFilters());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Delete failed");
@@ -168,6 +183,7 @@ function App() {
       setImages((currentImages) =>
         currentImages.map((currentImage) => (currentImage.id === updated.id ? updated : currentImage))
       );
+      setSelectedImageId(updated.id);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save annotations");
     } finally {
@@ -183,6 +199,22 @@ function App() {
       ...(metadata.color_palette ?? []),
       metadata.season
     ].filter(Boolean);
+  }
+
+  function metadataRows(image: ImageRecord) {
+    const metadata = image.metadata;
+    return [
+      ["Garment type", metadata.garment_type],
+      ["Style", metadata.style],
+      ["Material", metadata.material],
+      ["Color", metadata.color_palette],
+      ["Pattern", metadata.pattern],
+      ["Season", metadata.season ? [metadata.season] : []],
+      ["Occasion", metadata.occasion],
+      ["Consumer", metadata.consumer_profile],
+      ["Trend notes", metadata.trend_notes],
+      ["Scene", metadata.location_context?.scene ? [metadata.location_context.scene] : []]
+    ].filter(([, values]) => Array.isArray(values) && values.length > 0) as [string, string[]][];
   }
 
   function renderFilterSelect(key: keyof Omit<GalleryFilters, "query">) {
@@ -207,9 +239,11 @@ function App() {
     );
   }
 
+  const selectedImage = images.find((image) => image.id === selectedImageId) ?? images[0] ?? null;
+
   return (
     <main className="min-h-screen bg-stone-50 text-neutral-900">
-      <section className="mx-auto max-w-6xl px-6 py-10">
+      <section className="mx-auto max-w-[1500px] px-6 py-10">
         <div className="mb-8">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-emerald-700">
             Fashion Inspiration App
@@ -218,12 +252,11 @@ function App() {
             Upload and review field inspiration images.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-neutral-700">
-            This step stores uploaded images and shows AI metadata from the backend
-            classification boundary. Search, filters, and annotations come next.
+            Upload field images, search AI metadata, and keep designer notes beside the selected reference.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[360px_1fr]">
+        <div className="grid gap-8 xl:grid-cols-[320px_minmax(520px,1fr)_420px]">
           <form
             className="h-fit rounded-lg border border-stone-200 bg-white p-5 shadow-sm"
             onSubmit={handleSubmit}
@@ -295,7 +328,7 @@ function App() {
             {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
           </form>
 
-          <section>
+          <section className="min-w-0">
             <div className="mb-4 flex items-end justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-semibold">Image library</h2>
@@ -350,105 +383,147 @@ function App() {
               </div>
             ) : null}
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-5">
               {images.map((image) => (
-                <article
-                  className="overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm"
+                <button
+                  className={`min-w-0 overflow-hidden rounded-lg border bg-white text-left shadow-sm transition ${
+                    selectedImage?.id === image.id ? "border-emerald-600 ring-2 ring-emerald-100" : "border-stone-200"
+                  }`}
                   key={image.id}
+                  onClick={() => setSelectedImageId(image.id)}
+                  type="button"
                 >
                   <img
                     className="aspect-[4/5] w-full object-cover"
                     src={getImageUrl(image.image_url)}
                     alt={image.description ?? "Fashion inspiration upload"}
                   />
-                  <div className="space-y-3 p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <p className="font-medium">{image.designer || "Unknown designer"}</p>
-                      <button
-                        className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-700 disabled:cursor-wait disabled:opacity-60"
-                        disabled={deletingId === image.id}
-                        onClick={() => handleDelete(image.id)}
-                        type="button"
-                      >
-                        {deletingId === image.id ? "Deleting..." : "Delete"}
-                      </button>
-                    </div>
+                  <div className="space-y-2 p-4">
+                    <p className="font-medium leading-6">{image.designer || "Unknown designer"}</p>
                     <p className="text-sm text-neutral-600">
                       {[image.city, image.country].filter(Boolean).join(", ") || "No location"}
                     </p>
-                    {image.description ? (
-                      <div>
-                        <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-neutral-500">
-                          AI description
-                        </p>
-                        <p className="text-sm leading-6 text-neutral-700">{image.description}</p>
-                      </div>
-                    ) : null}
-                    <div>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-neutral-500">
-                        AI metadata
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {metadataTags(image).map((tag) => (
-                          <span
-                            className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800"
-                            key={tag}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="border-t border-stone-200 pt-3">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
-                        Designer annotations
-                      </p>
-                      {image.designer_tags.length > 0 ? (
-                        <div className="mb-2 flex flex-wrap gap-2">
-                          {image.designer_tags.map((tag) => (
-                            <span
-                              className="rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800"
-                              key={tag}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      ) : null}
-                      {image.designer_notes ? (
-                        <p className="mb-3 text-sm leading-6 text-neutral-700">{image.designer_notes}</p>
-                      ) : null}
-                      <form className="space-y-2" onSubmit={(event) => handleAnnotationSubmit(event, image)}>
-                        <input
-                          className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm"
-                          defaultValue={image.designer_tags.join(", ")}
-                          name="designer_tags"
-                          placeholder="human tags, comma separated"
-                        />
-                        <textarea
-                          className="min-h-20 w-full rounded-md border border-stone-300 px-3 py-2 text-sm"
-                          defaultValue={image.designer_notes ?? ""}
-                          name="designer_notes"
-                          placeholder="Designer notes and observations"
-                        />
-                        <button
-                          className="rounded-md border border-stone-300 px-3 py-2 text-sm font-medium disabled:cursor-wait disabled:opacity-60"
-                          disabled={savingAnnotationId === image.id}
-                          type="submit"
+                    <div className="flex flex-wrap gap-2">
+                      {metadataTags(image).slice(0, 5).map((tag) => (
+                        <span
+                          className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800"
+                          key={tag}
                         >
-                          {savingAnnotationId === image.id ? "Saving..." : "Save annotations"}
-                        </button>
-                      </form>
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                     <p className="text-xs text-neutral-500">
                       Uploaded {new Date(image.created_at).toLocaleDateString()}
                     </p>
                   </div>
-                </article>
+                </button>
               ))}
             </div>
           </section>
+
+          <aside className="h-fit rounded-lg border border-stone-200 bg-white p-5 shadow-sm xl:sticky xl:top-6">
+            {selectedImage ? (
+              <div className="space-y-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h2 className="text-xl font-semibold">Image details</h2>
+                    <p className="mt-1 text-sm text-neutral-600">
+                      {[selectedImage.city, selectedImage.country].filter(Boolean).join(", ") || "No location"}
+                    </p>
+                  </div>
+                  <button
+                    className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-700 disabled:cursor-wait disabled:opacity-60"
+                    disabled={deletingId === selectedImage.id}
+                    onClick={() => handleDelete(selectedImage.id)}
+                    type="button"
+                  >
+                    {deletingId === selectedImage.id ? "Deleting..." : "Delete"}
+                  </button>
+                </div>
+
+                <img
+                  className="aspect-[4/5] w-full rounded-md object-cover"
+                  src={getImageUrl(selectedImage.image_url)}
+                  alt={selectedImage.description ?? "Selected fashion inspiration"}
+                />
+
+                <section>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                    AI-generated
+                  </p>
+                  {selectedImage.description ? (
+                    <p className="text-sm leading-6 text-neutral-700">{selectedImage.description}</p>
+                  ) : null}
+                  <div className="mt-3 space-y-2">
+                    {metadataRows(selectedImage).map(([label, values]) => (
+                      <div key={label}>
+                        <p className="text-xs font-semibold text-neutral-500">{label}</p>
+                        <div className="mt-1 flex flex-wrap gap-2">
+                          {values.map((value) => (
+                            <span
+                              className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800"
+                              key={`${label}-${value}`}
+                            >
+                              {value}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="border-t border-stone-200 pt-4">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                    Designer annotations
+                  </p>
+                  {selectedImage.designer_tags.length > 0 ? (
+                    <div className="mb-2 flex flex-wrap gap-2">
+                      {selectedImage.designer_tags.map((tag) => (
+                        <span
+                          className="rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800"
+                          key={tag}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+                  {selectedImage.designer_notes ? (
+                    <p className="mb-3 text-sm leading-6 text-neutral-700">{selectedImage.designer_notes}</p>
+                  ) : null}
+                  <form className="space-y-2" onSubmit={(event) => handleAnnotationSubmit(event, selectedImage)}>
+                    <input
+                      className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm"
+                      defaultValue={selectedImage.designer_tags.join(", ")}
+                      key={`tags-${selectedImage.id}-${selectedImage.updated_at}`}
+                      name="designer_tags"
+                      placeholder="human tags, comma separated"
+                    />
+                    <textarea
+                      className="min-h-24 w-full rounded-md border border-stone-300 px-3 py-2 text-sm"
+                      defaultValue={selectedImage.designer_notes ?? ""}
+                      key={`notes-${selectedImage.id}-${selectedImage.updated_at}`}
+                      name="designer_notes"
+                      placeholder="Designer notes and observations"
+                    />
+                    <button
+                      className="rounded-md border border-stone-300 px-3 py-2 text-sm font-medium disabled:cursor-wait disabled:opacity-60"
+                      disabled={savingAnnotationId === selectedImage.id}
+                      type="submit"
+                    >
+                      {savingAnnotationId === selectedImage.id ? "Saving..." : "Save annotations"}
+                    </button>
+                  </form>
+                </section>
+              </div>
+            ) : (
+              <div className="rounded-lg border border-dashed border-stone-300 p-6 text-center text-sm text-neutral-600">
+                Select an image to review AI metadata and designer annotations.
+              </div>
+            )}
+          </aside>
         </div>
       </section>
     </main>

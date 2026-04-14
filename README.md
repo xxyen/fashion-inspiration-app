@@ -62,7 +62,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-The frontend can upload an image with optional designer and location context, render stored image records and AI metadata, search the gallery, filter by dynamically generated garment, consumer, location, time, and designer metadata options, and add human designer notes and tags.
+The frontend can upload an image with optional designer and location context, render a searchable image grid, filter by dynamically generated garment, consumer, location, time, and designer metadata options, and review AI metadata plus human designer notes in a selected-image detail panel.
 
 Backend tests:
 
