@@ -19,9 +19,12 @@ type GalleryFilters = {
   season: string;
   occasion: string;
   consumer_profile: string;
+  continent: string;
   country: string;
   city: string;
   designer: string;
+  year: string;
+  month: string;
 };
 
 const emptyFilters: GalleryFilters = {
@@ -34,9 +37,12 @@ const emptyFilters: GalleryFilters = {
   season: "",
   occasion: "",
   consumer_profile: "",
+  continent: "",
   country: "",
   city: "",
-  designer: ""
+  designer: "",
+  year: "",
+  month: ""
 };
 
 const filterLabels: Record<keyof Omit<GalleryFilters, "query">, string> = {
@@ -48,9 +54,12 @@ const filterLabels: Record<keyof Omit<GalleryFilters, "query">, string> = {
   season: "Season",
   occasion: "Occasion",
   consumer_profile: "Consumer",
+  continent: "Continent",
   country: "Country",
   city: "City",
-  designer: "Designer"
+  designer: "Designer",
+  year: "Year",
+  month: "Month"
 };
 
 const primaryFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
@@ -67,7 +76,10 @@ const advancedFilterKeys: Array<keyof Omit<GalleryFilters, "query">> = [
   "pattern",
   "occasion",
   "consumer_profile",
-  "city"
+  "continent",
+  "city",
+  "year",
+  "month"
 ];
 
 function App() {

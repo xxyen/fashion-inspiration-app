@@ -19,10 +19,12 @@ def test_list_images_filters_and_dynamic_filter_options(tmp_path, monkeypatch):
                 description,
                 metadata_json,
                 designer,
+                continent,
                 country,
-                city
+                city,
+                captured_at
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 "one.jpg",
@@ -43,8 +45,10 @@ def test_list_images_filters_and_dynamic_filter_options(tmp_path, monkeypatch):
                     }
                 ),
                 "Avery",
+                "Europe",
                 "France",
                 "Paris",
+                "2026-04-14",
             ),
         )
     rebuild_search_index()
@@ -53,13 +57,20 @@ def test_list_images_filters_and_dynamic_filter_options(tmp_path, monkeypatch):
     assert len(list_images(query="embroider")) == 1
     assert len(list_images(query="!!!")) == 0
     assert len(list_images(garment_type="dress")) == 1
+    assert len(list_images(continent="Europe")) == 1
     assert len(list_images(country="France")) == 1
+    assert len(list_images(year="2026")) == 1
+    assert len(list_images(month="04")) == 1
+    assert len(list_images(month="05")) == 0
     assert len(list_images(style="streetwear")) == 0
 
     filters = get_filters()
     assert filters["garment_type"] == ["dress"]
     assert filters["style"] == ["bohemian"]
+    assert filters["continent"] == ["Europe"]
     assert filters["country"] == ["France"]
+    assert filters["year"] == ["2026"]
+    assert filters["month"] == ["04"]
 
 
 def test_update_annotations_and_searches_human_notes(tmp_path, monkeypatch):

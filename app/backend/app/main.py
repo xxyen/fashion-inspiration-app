@@ -81,6 +81,20 @@ def value_matches(value: str | None, expected: str | None) -> bool:
     return not expected or normalize(value) == normalize(expected)
 
 
+def date_value(record: dict) -> str:
+    return record["captured_at"] or record["created_at"] or ""
+
+
+def record_year(record: dict) -> str | None:
+    value = date_value(record)
+    return value[:4] if len(value) >= 4 and value[:4].isdigit() else None
+
+
+def record_month(record: dict) -> str | None:
+    value = date_value(record)
+    return value[5:7] if len(value) >= 7 and value[5:7].isdigit() else None
+
+
 def searchable_text(record: dict) -> str:
     metadata = record["metadata"]
     pieces = [
@@ -149,9 +163,12 @@ def record_matches(
     season: str | None,
     occasion: str | None,
     consumer_profile: str | None,
+    continent: str | None,
     country: str | None,
     city: str | None,
     designer: str | None,
+    year: str | None,
+    month: str | None,
 ) -> bool:
     metadata = record["metadata"]
     return (
@@ -163,9 +180,12 @@ def record_matches(
         and value_matches(metadata.get("season"), season)
         and list_matches(metadata.get("occasion", []), occasion)
         and list_matches(metadata.get("consumer_profile", []), consumer_profile)
+        and value_matches(record["continent"], continent)
         and value_matches(record["country"], country)
         and value_matches(record["city"], city)
         and value_matches(record["designer"], designer)
+        and value_matches(record_year(record), year)
+        and value_matches(record_month(record), month)
     )
 
 
@@ -250,9 +270,12 @@ def list_images(
     season: str | None = None,
     occasion: str | None = None,
     consumer_profile: str | None = None,
+    continent: str | None = None,
     country: str | None = None,
     city: str | None = None,
     designer: str | None = None,
+    year: str | None = None,
+    month: str | None = None,
 ) -> list[dict]:
     with get_connection() as connection:
         matched_ids = search_image_ids(connection, query)
@@ -274,9 +297,12 @@ def list_images(
             season,
             occasion,
             consumer_profile,
+            continent,
             country,
             city,
             designer,
+            year,
+            month,
         )
     ]
 
@@ -295,9 +321,12 @@ def get_filters() -> dict[str, list[str]]:
         "season": set(),
         "occasion": set(),
         "consumer_profile": set(),
+        "continent": set(),
         "country": set(),
         "city": set(),
         "designer": set(),
+        "year": set(),
+        "month": set(),
     }
 
     for row in rows:
@@ -311,9 +340,12 @@ def get_filters() -> dict[str, list[str]]:
         add_values(buckets["occasion"], metadata.get("occasion", []))
         add_values(buckets["consumer_profile"], metadata.get("consumer_profile", []))
         add_values(buckets["season"], [metadata["season"]] if metadata.get("season") else [])
+        add_values(buckets["continent"], [record["continent"]] if record.get("continent") else [])
         add_values(buckets["country"], [record["country"]] if record.get("country") else [])
         add_values(buckets["city"], [record["city"]] if record.get("city") else [])
         add_values(buckets["designer"], [record["designer"]] if record.get("designer") else [])
+        add_values(buckets["year"], [record_year(record)] if record_year(record) else [])
+        add_values(buckets["month"], [record_month(record)] if record_month(record) else [])
 
     return {key: sorted(values) for key, values in buckets.items()}
 

@@ -47,7 +47,7 @@ DELETE /api/images/{image_id}
 ```
 
 `POST /api/images` accepts multipart form data with an `image` file and optional context fields: `designer`, `continent`, `country`, `city`, and `captured_at`.
-`GET /api/images` supports search and filters through query params such as `query`, `garment_type`, `style`, `material`, `color_palette`, `pattern`, `season`, `occasion`, `consumer_profile`, `country`, `city`, and `designer`.
+`GET /api/images` supports search and filters through query params such as `query`, `garment_type`, `style`, `material`, `color_palette`, `pattern`, `season`, `occasion`, `consumer_profile`, `continent`, `country`, `city`, `designer`, `year`, and `month`.
 `GET /api/filters` dynamically returns available filter values from stored image metadata.
 `PATCH /api/images/{image_id}/annotations` updates human-entered designer tags and notes.
 `DELETE /api/images/{image_id}` removes the database record and the uploaded local image file.
@@ -108,7 +108,7 @@ The E2E test starts its own backend and frontend servers on `127.0.0.1:8010` and
 | --- | --- | --- |
 | Image upload and storage | [x] Done | Uploads local images and stores metadata in SQLite. |
 | AI classification | [x] Done | Uses a multimodal model to return a description and structured attributes. |
-| Search and filters | [x] Done | Supports text search and dynamic filters from stored metadata. |
+| Search and filters | [x] Done | Supports FTS search and dynamic fashion, location, time, and designer filters. |
 | Designer annotations | [x] Done | Designers can add tags and notes separate from AI output. |
 | Model evaluation | [x] Done | Uses 70 manually reviewed Pexels images and reports per-field accuracy. |
 | Testing | [x] Done | Includes parser tests, filter integration tests, and one upload/classify/filter E2E test. |

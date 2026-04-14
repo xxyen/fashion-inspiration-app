@@ -42,9 +42,12 @@ export type FilterOptions = {
   season: string[];
   occasion: string[];
   consumer_profile: string[];
+  continent: string[];
   country: string[];
   city: string[];
   designer: string[];
+  year: string[];
+  month: string[];
 };
 
 export type AnnotationPayload = {
