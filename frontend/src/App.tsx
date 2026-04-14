@@ -1,5 +1,12 @@
 import { FormEvent, useEffect, useState } from "react";
-import { deleteImage, fetchFilters, fetchImages, getImageUrl, uploadImage } from "./api";
+import {
+  deleteImage,
+  fetchFilters,
+  fetchImages,
+  getImageUrl,
+  updateAnnotations,
+  uploadImage
+} from "./api";
 import type { FilterOptions, ImageRecord } from "./types";
 
 type GalleryFilters = {
@@ -70,6 +77,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [savingAnnotationId, setSavingAnnotationId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   function imageQueryParams(nextFilters = filters) {
@@ -139,6 +147,31 @@ function App() {
       setError(err instanceof Error ? err.message : "Delete failed");
     } finally {
       setDeletingId(null);
+    }
+  }
+
+  async function handleAnnotationSubmit(event: FormEvent<HTMLFormElement>, image: ImageRecord) {
+    event.preventDefault();
+    setError(null);
+    setSavingAnnotationId(image.id);
+    try {
+      const formData = new FormData(event.currentTarget);
+      const tags = String(formData.get("designer_tags") ?? "")
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+      const notes = String(formData.get("designer_notes") ?? "").trim();
+      const updated = await updateAnnotations(image.id, {
+        designer_tags: tags,
+        designer_notes: notes || null
+      });
+      setImages((currentImages) =>
+        currentImages.map((currentImage) => (currentImage.id === updated.id ? updated : currentImage))
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to save annotations");
+    } finally {
+      setSavingAnnotationId(null);
     }
   }
 
@@ -328,7 +361,7 @@ function App() {
                     src={getImageUrl(image.image_url)}
                     alt={image.description ?? "Fashion inspiration upload"}
                   />
-                  <div className="space-y-2 p-4">
+                  <div className="space-y-3 p-4">
                     <div className="flex items-start justify-between gap-3">
                       <p className="font-medium">{image.designer || "Unknown designer"}</p>
                       <button
@@ -344,17 +377,69 @@ function App() {
                       {[image.city, image.country].filter(Boolean).join(", ") || "No location"}
                     </p>
                     {image.description ? (
-                      <p className="text-sm leading-6 text-neutral-700">{image.description}</p>
+                      <div>
+                        <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                          AI description
+                        </p>
+                        <p className="text-sm leading-6 text-neutral-700">{image.description}</p>
+                      </div>
                     ) : null}
-                    <div className="flex flex-wrap gap-2">
-                      {metadataTags(image).map((tag) => (
-                        <span
-                          className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800"
-                          key={tag}
+                    <div>
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                        AI metadata
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {metadataTags(image).map((tag) => (
+                          <span
+                            className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800"
+                            key={tag}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="border-t border-stone-200 pt-3">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                        Designer annotations
+                      </p>
+                      {image.designer_tags.length > 0 ? (
+                        <div className="mb-2 flex flex-wrap gap-2">
+                          {image.designer_tags.map((tag) => (
+                            <span
+                              className="rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800"
+                              key={tag}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      ) : null}
+                      {image.designer_notes ? (
+                        <p className="mb-3 text-sm leading-6 text-neutral-700">{image.designer_notes}</p>
+                      ) : null}
+                      <form className="space-y-2" onSubmit={(event) => handleAnnotationSubmit(event, image)}>
+                        <input
+                          className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm"
+                          defaultValue={image.designer_tags.join(", ")}
+                          name="designer_tags"
+                          placeholder="human tags, comma separated"
+                        />
+                        <textarea
+                          className="min-h-20 w-full rounded-md border border-stone-300 px-3 py-2 text-sm"
+                          defaultValue={image.designer_notes ?? ""}
+                          name="designer_notes"
+                          placeholder="Designer notes and observations"
+                        />
+                        <button
+                          className="rounded-md border border-stone-300 px-3 py-2 text-sm font-medium disabled:cursor-wait disabled:opacity-60"
+                          disabled={savingAnnotationId === image.id}
+                          type="submit"
                         >
-                          {tag}
-                        </span>
-                      ))}
+                          {savingAnnotationId === image.id ? "Saving..." : "Save annotations"}
+                        </button>
+                      </form>
                     </div>
                     <p className="text-xs text-neutral-500">
                       Uploaded {new Date(image.created_at).toLocaleDateString()}

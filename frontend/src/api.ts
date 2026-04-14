@@ -1,4 +1,4 @@
-import type { FilterOptions, ImageRecord } from "./types";
+import type { AnnotationPayload, FilterOptions, ImageRecord } from "./types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
@@ -43,4 +43,19 @@ export async function deleteImage(id: number): Promise<void> {
     const payload = await response.json().catch(() => null);
     throw new Error(payload?.detail ?? "Failed to delete image");
   }
+}
+
+export async function updateAnnotations(id: number, payload: AnnotationPayload): Promise<ImageRecord> {
+  const response = await fetch(`${API_BASE_URL}/api/images/${id}/annotations`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) {
+    const errorPayload = await response.json().catch(() => null);
+    throw new Error(errorPayload?.detail ?? "Failed to update annotations");
+  }
+  return response.json();
 }

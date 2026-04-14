@@ -8,6 +8,7 @@ from .classifier import classify_image
 from .config import UPLOAD_DIR
 from .db import get_connection, init_db
 from .schemas import GarmentAttributes
+from pydantic import BaseModel, Field
 
 
 app = FastAPI(title="Fashion Inspiration API")
@@ -22,6 +23,11 @@ app.add_middleware(
 
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+
+
+class AnnotationUpdate(BaseModel):
+    designer_tags: list[str] = Field(default_factory=list)
+    designer_notes: str | None = None
 
 
 @app.on_event("startup")
@@ -269,6 +275,35 @@ def get_filters() -> dict[str, list[str]]:
         add_values(buckets["designer"], [record["designer"]] if record.get("designer") else [])
 
     return {key: sorted(values) for key, values in buckets.items()}
+
+
+@app.patch("/api/images/{image_id}/annotations")
+def update_annotations(image_id: int, payload: AnnotationUpdate) -> dict:
+    tags = [tag.strip() for tag in payload.designer_tags if tag.strip()]
+    notes = payload.designer_notes.strip() if payload.designer_notes else None
+    with get_connection() as connection:
+        row = connection.execute(
+            "SELECT * FROM images WHERE id = ?",
+            (image_id,),
+        ).fetchone()
+        if row is None:
+            raise HTTPException(status_code=404, detail="Image not found")
+
+        connection.execute(
+            """
+            UPDATE images
+            SET designer_tags_json = ?,
+                designer_notes = ?,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = ?
+            """,
+            (json.dumps(tags), notes, image_id),
+        )
+        updated = connection.execute(
+            "SELECT * FROM images WHERE id = ?",
+            (image_id,),
+        ).fetchone()
+    return serialize_image(updated)
 
 
 @app.delete("/api/images/{image_id}")

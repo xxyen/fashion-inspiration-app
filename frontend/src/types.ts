@@ -46,3 +46,8 @@ export type FilterOptions = {
   city: string[];
   designer: string[];
 };
+
+export type AnnotationPayload = {
+  designer_tags: string[];
+  designer_notes: string | null;
+};

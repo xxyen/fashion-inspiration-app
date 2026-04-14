@@ -1,6 +1,6 @@
 # Fashion Inspiration App
 
-Initial project scaffold for a fashion inspiration image library. The app currently supports image upload, a basic gallery backed by SQLite, and an AI classification boundary with deterministic placeholder metadata.
+Initial project scaffold for a fashion inspiration image library. The app currently supports image upload, a searchable gallery backed by SQLite, AI classification, and designer annotations.
 
 The planned stack is:
 
@@ -40,12 +40,14 @@ GET /api/health
 POST /api/images
 GET /api/images
 GET /api/filters
+PATCH /api/images/{image_id}/annotations
 DELETE /api/images/{image_id}
 ```
 
 `POST /api/images` accepts multipart form data with an `image` file and optional context fields: `designer`, `continent`, `country`, `city`, and `captured_at`.
 `GET /api/images` supports search and filters through query params such as `query`, `garment_type`, `style`, `material`, `color_palette`, `pattern`, `season`, `occasion`, `consumer_profile`, `country`, `city`, and `designer`.
 `GET /api/filters` dynamically returns available filter values from stored image metadata.
+`PATCH /api/images/{image_id}/annotations` updates human-entered designer tags and notes.
 `DELETE /api/images/{image_id}` removes the database record and the uploaded local image file.
 
 Uploaded images are classified through `backend/app/classifier.py`. The classifier currently returns placeholder metadata so the workflow is stable before connecting a real multimodal model.
@@ -60,7 +62,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-The frontend can upload an image with optional designer and location context, render stored image records and AI metadata, search the gallery, and filter by dynamically generated garment, consumer, location, time, and designer metadata options.
+The frontend can upload an image with optional designer and location context, render stored image records and AI metadata, search the gallery, filter by dynamically generated garment, consumer, location, time, and designer metadata options, and add human designer notes and tags.
 
 Backend tests:
 
@@ -84,5 +86,5 @@ If `OPENAI_API_KEY` is not set, the backend falls back to deterministic placehol
 
 ## Next Steps
 
-1. Add designer annotations.
-2. Add evaluation and end-to-end tests.
+1. Add evaluation scripts and a labeled Pexels test set.
+2. Add end-to-end tests.
